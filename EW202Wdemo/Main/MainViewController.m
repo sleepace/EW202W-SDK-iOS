@@ -46,7 +46,7 @@
     self.selectedIndex = -1;
     self.tabItemList =
     @[
-        [TabBarItem tabBarItemWithTitle:@"distribution_network" viewControllerClassString:@"ConfigWIFIViewController"],
+//        [TabBarItem tabBarItemWithTitle:@"distribution_network" viewControllerClassString:@"ConfigWIFIViewController"],
         [TabBarItem tabBarItemWithTitle:@"device" viewControllerClassString:@"DeviceViewController"],
         [TabBarItem tabBarItemWithTitle:@"control" viewControllerClassString:@"ControlViewController"],
         [TabBarItem tabBarItemWithTitle:@"setting" viewControllerClassString:@"SettingsViewController"],
@@ -54,7 +54,7 @@
     
     self.tabControllerItems =
     @[
-        [NSClassFromString(@"ConfigWIFIViewController") new],
+//        [NSClassFromString(@"ConfigWIFIViewController") new],
         [NSClassFromString(@"DeviceViewController") new],
         [NSClassFromString(@"ControlViewController") new],
         [NSClassFromString(@"SettingsViewController") new],

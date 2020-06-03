@@ -93,6 +93,7 @@ enum {
         if (status == SLPDataTransferStatus_Succeed) {
             SLPDeviceInfo *deviceInfo = data;
             SharedDataManager.deviceID = deviceInfo.deviceID;
+            [[NSUserDefaults standardUserDefaults] setObject:deviceInfo.deviceID forKey:@"deviceID"];
             SharedDataManager.deviceName = info.name;
             SharedDataManager.peripheral = info.peripheral;
             [weakSelf.navigationController popViewControllerAnimated:YES];

@@ -49,6 +49,9 @@
         _bean.endMin = 0;
         _bean.flag = 0;
         
+        _deviceID = @"";
+        _token = @"";
+        
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"serverIP"]) {
             _serverIP = [[NSUserDefaults standardUserDefaults] valueForKey:@"serverIP"];
         }
@@ -60,6 +63,12 @@
         }
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"serverWIFIPassword"]) {
             _password = [[NSUserDefaults standardUserDefaults] valueForKey:@"serverWIFIPassword"];
+        }
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"deviceID"]) {
+            _deviceID = [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceID"];
+        }
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"token"]) {
+            _token = [[NSUserDefaults standardUserDefaults] valueForKey:@"token"];
         }
     }
     

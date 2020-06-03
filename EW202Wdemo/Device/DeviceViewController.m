@@ -13,16 +13,18 @@
 #import <SLPTCP/SLPLTcpUpgradeInfo.h>
 #import "DatePickerPopUpView.h"
 
-@interface DeviceViewController ()
+@interface DeviceViewController ()<UITextFieldDelegate>
 {
     SLPTimer *progressTimer;///是否收到升级进度超时定时器
 }
 @property (nonatomic, weak) IBOutlet UIView *contentView;
-@property (nonatomic, weak) IBOutlet UIButton *connectBtn;
 @property (nonatomic, weak) IBOutlet UIView *userIDShell;
 @property (nonatomic, weak) IBOutlet UILabel *userIDTitleLabel;
 @property (nonatomic, weak) IBOutlet UITextField *userIDLabel;
 //deviceInfo
+@property (nonatomic, weak) IBOutlet UITextField *ipTextField;
+@property (nonatomic, weak) IBOutlet UITextField *tokenTextField;
+@property (nonatomic, weak) IBOutlet UIButton *connectBtn;
 @property (nonatomic, weak) IBOutlet UIView *deviceInfoShell;
 @property (nonatomic, weak) IBOutlet UILabel *deviceInfoSectionLabel;
 @property (nonatomic, weak) IBOutlet UIButton *getDeviceNameBtn;
@@ -34,11 +36,13 @@
 @property (nonatomic, weak) IBOutlet UIButton *getMacBtn;
 @property (nonatomic, weak) IBOutlet UILabel *macLabel;
 //firmwareInfo
+@property (nonatomic, weak) IBOutlet UITextField *deviceIDTextField;
+@property (nonatomic, weak) IBOutlet UITextField *firmwareVersionTextField;
+@property (nonatomic, weak) IBOutlet UIButton *upgradeBtn;
 @property (nonatomic, weak) IBOutlet UIView *firmwareInfoShell;
 @property (nonatomic, weak) IBOutlet UILabel *firmwareInfoSectionLabel;
 @property (nonatomic, weak) IBOutlet UIButton *getFirmwareVersionBtn;
 @property (nonatomic, weak) IBOutlet UILabel *firmwareVersionLabel;
-@property (nonatomic, weak) IBOutlet UIButton *upgradeBtn;
 
 //setting
 @property (nonatomic, weak) IBOutlet UIView *settingShell;
@@ -84,13 +88,31 @@
     [Utils configSectionTitle:self.firmwareInfoSectionLabel];
     [Utils configSectionTitle:self.settingSectionLabel];
     
+    self.ipTextField.placeholder = LocalizedString(@"server_ip");
+    self.tokenTextField.placeholder = LocalizedString(@"token");
+    self.deviceIDTextField.placeholder = LocalizedString(@"device_id");
+    self.firmwareVersionTextField.placeholder = LocalizedString(@"固件版本");
+    self.ipTextField.text = @"http://172.14.1.100:9080";
+    self.deviceIDTextField.text = @"EW22W20C00045";
+    if (SharedDataManager.token.length > 0) {
+        self.tokenTextField.text = SharedDataManager.token;
+    } else {
+        self.tokenTextField.text = @"kylhm2tu62sw";
+    }
+    
+    self.ipTextField.delegate = self;
+    self.tokenTextField.delegate = self;
+    self.deviceIDTextField.delegate = self;
+    self.firmwareVersionTextField.delegate = self;
+
     [Utils setButton:self.getDeviceNameBtn title:LocalizedString(@"device_id_clear")];
     [Utils setButton:self.getDeviceIDBtn title:LocalizedString(@"device_id_cipher")];
     [Utils setButton:self.getBatteryBtn title:LocalizedString(@"obtain_electricity")];
     [Utils setButton:self.getFirmwareVersionBtn title:LocalizedString(@"obtain_firmware")];
     [Utils setButton:self.getMacBtn title:LocalizedString(@"obtain_mac_address")];
     [Utils setButton:self.upgradeBtn title:LocalizedString(@"fireware_update")];
-    
+    [Utils setButton:self.connectBtn title:LocalizedString(@"connect_device")];
+
     [self.alarmTitleLabel setText:LocalizedString(@"apnea_alert")];
     [self.alarmTimeLabel setText:LocalizedString(@"set_alert_switch")];
     [self.alarmTimeIcon setImage:[UIImage imageNamed:@"common_list_icon_leftarrow.png"]];
@@ -138,6 +160,7 @@
     }else{
         [Utils setButton:self.connectBtn title:LocalizedString(@"disconnect")];
     }
+    [Utils setButton:self.connectBtn title:LocalizedString(@"connect_device")];
     [self.settingShell setUserInteractionEnabled:connected];
 }
 
@@ -145,7 +168,7 @@
     [super viewDidAppear:animated];
 //    [self.deviceIDLabel setText:SharedDataManager.deviceID];
 //    [self.deviceNameLabel setText:SharedDataManager.deviceName];
-    [self showConnected:SharedDataManager.connected];
+//    [self showConnected:SharedDataManager.connected];
 }
 
 - (void)addNotificationObservre {
@@ -164,13 +187,13 @@
 - (void)tcpDeviceConnected:(NSNotification *)notification {
     self.connected = YES;
     SharedDataManager.connected = YES;
-    [self showConnected:YES];
+//    [self showConnected:YES];
 }
 
 - (void)tcpDeviceDisconnected:(NSNotification *)notification {
     self.connected = NO;
     SharedDataManager.connected = NO;
-    [self showConnected:NO];
+//    [self showConnected:NO];
 }
 
 - (IBAction)getDeviceNameClicked:(id)sender {
@@ -179,6 +202,48 @@
 
 - (IBAction)getDeviceIDClicked:(id)sender {
     [self.deviceIDLabel setText:SharedDataManager.deviceName];
+}
+
+-(IBAction)connectDevice:(id)sender {
+    if (self.deviceIDTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"设备ID不能为空") controller:self];
+        return;
+    }
+    if (self.ipTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"服务器地址不能为空") controller:self];
+        return;
+    }
+    if (self.tokenTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"token不能为空") controller:self];
+        return;
+    }
+    
+    [SLPSharedLTcpManager.lTcp disconnectCompletion:nil];
+    
+    SharedDataManager.deviceID = self.deviceIDTextField.text;
+
+    __weak typeof(self) weakSelf = self;
+    [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:self.ipTextField.text thirdPlatform:@"123456987" channelID:63100 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            SharedDataManager.token = weakSelf.tokenTextField.text;
+            [[NSUserDefaults standardUserDefaults] setValue:weakSelf.tokenTextField.text forKey:@"token"];
+            
+            NSString *str = SharedDataManager.deviceID;
+            NSLog(@"deviceID ---- %@",str);
+            [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID loginHost:@"172.14.1.100" port:9010 token:@"" channelID:@"" completion:^(SLPDataTransferStatus status, id data) {
+                if (status == SLPDataTransferStatus_Succeed) {
+                    SharedDataManager.connected = YES;
+                    [Utils showMessage:LocalizedString(@"连接成功") controller:self];
+                } else {
+                    [Utils showMessage:LocalizedString(@"连接失败") controller:self];
+                }
+                [weakSelf unshowLoadingView];
+            }];
+            
+        } else {
+            [Utils showMessage:LocalizedString(@"失败") controller:weakSelf];
+        }
+    }];
 }
 
 - (IBAction)getDeviceVerionClicked:(id)sender {
@@ -200,10 +265,24 @@
 - (IBAction)upgradeClicked:(id)sender {
     __weak typeof(self) weakSelf = self;
     
+    if (self.firmwareVersionTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"请输入固件版本") controller:self];
+        return;
+    }
+    
+    if (self.deviceIDTextField.text.length == 0 && SharedDataManager.deviceID.length == 0) {
+        [Utils showMessage:LocalizedString(@"请输入设备ID") controller:self];
+        return;
+    }
+    
+    if (self.deviceIDTextField.text.length != 0) {
+        SharedDataManager.deviceID = self.deviceIDTextField.text;
+    }
+    
     SLPLoadingBlockView *loadingView = [self showLoadingView];
     [loadingView setText:LocalizedString(@"upgrading")];
     
-    [SLPSharedLTcpManager publicUpdateOperationWithDeviceID:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W firmwareType:1 firmwareVersion:0 timeout:0 completion:^(SLPDataTransferReturnStatus status, id data) {
+    [SLPSharedLTcpManager publicUpdateOperationWithDeviceID:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W firmwareType:1 firmwareVersion:1.01 timeout:0 completion:^(SLPDataTransferReturnStatus status, id data) {
         if (status == SLPDataTransferReturnStatus_Succeed)///通知升级成功（获取进度)
         {
             ///接收nox升级进度
@@ -278,4 +357,24 @@
     }
 }
 
+- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string
+{
+    NSString *blank = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];
+    
+    if(![string isEqualToString:blank]) {
+        return NO;
+    }
+    
+    if ([string length] > 0) {
+        unichar single = [string characterAtIndex:0];//当前输入的字符
+
+        if (textField == self.firmwareVersionTextField) {
+            if ((single < '0' || single > '9') && single != '.') {//数据格式正确
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
+}
 @end
