@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimePickerSelectView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVc-Ud-Rye">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XM-mL-Oyt">
+                    <rect key="frame" x="0.0" y="407" width="375" height="260"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73o-6w-0JJ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fna-JK-l1r">
+                                    <rect key="frame" x="4" y="8" width="60" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="dJh-5g-bzw"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="n0X-EQ-0fg"/>
+                                    </constraints>
+                                    <state key="normal" title="取消"/>
+                                    <connections>
+                                        <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="Nlu-4h-nXy"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW4-zA-Ucw">
+                                    <rect key="frame" x="311" y="8" width="60" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="UyO-to-bTx"/>
+                                        <constraint firstAttribute="height" constant="44" id="q2g-LD-7Wk"/>
+                                    </constraints>
+                                    <state key="normal" title="完成"/>
+                                    <connections>
+                                        <action selector="done:" destination="iN0-l3-epB" eventType="touchUpInside" id="92D-LE-omq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="XW4-zA-Ucw" firstAttribute="baseline" secondItem="Fna-JK-l1r" secondAttribute="baseline" id="9bb-FA-lSF"/>
+                                <constraint firstItem="Fna-JK-l1r" firstAttribute="leading" secondItem="73o-6w-0JJ" secondAttribute="leading" constant="4" id="AbO-Rp-2Vg"/>
+                                <constraint firstAttribute="trailing" secondItem="XW4-zA-Ucw" secondAttribute="trailing" constant="4" id="OKT-Zy-N6x"/>
+                                <constraint firstItem="XW4-zA-Ucw" firstAttribute="top" secondItem="73o-6w-0JJ" secondAttribute="topMargin" id="t2z-Ca-f1J"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JjR-Mz-GBU" customClass="SLPTimePicker">
+                            <rect key="frame" x="15" y="60" width="345" height="200"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="gmh-Zk-WOz"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="JjR-Mz-GBU" firstAttribute="top" secondItem="73o-6w-0JJ" secondAttribute="bottom" id="1WF-gs-b5Z"/>
+                        <constraint firstAttribute="bottom" secondItem="JjR-Mz-GBU" secondAttribute="bottom" id="7Hf-O8-HKQ"/>
+                        <constraint firstItem="73o-6w-0JJ" firstAttribute="leading" secondItem="9XM-mL-Oyt" secondAttribute="leading" id="IYS-Kw-Pjb"/>
+                        <constraint firstItem="JjR-Mz-GBU" firstAttribute="leading" secondItem="9XM-mL-Oyt" secondAttribute="leading" constant="15" id="LZo-bH-fw4"/>
+                        <constraint firstAttribute="height" constant="260" id="NiW-ma-lhJ"/>
+                        <constraint firstItem="73o-6w-0JJ" firstAttribute="top" secondItem="9XM-mL-Oyt" secondAttribute="top" id="U2A-P9-ewf"/>
+                        <constraint firstAttribute="trailing" secondItem="JjR-Mz-GBU" secondAttribute="trailing" constant="15" id="sCv-ac-zOR"/>
+                        <constraint firstAttribute="trailing" secondItem="73o-6w-0JJ" secondAttribute="trailing" id="tUy-nL-gXZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JVc-Ud-Rye" secondAttribute="trailing" id="Lft-tj-qJf"/>
+                <constraint firstItem="JVc-Ud-Rye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="R68-i3-bkq"/>
+                <constraint firstAttribute="trailing" secondItem="9XM-mL-Oyt" secondAttribute="trailing" id="W0J-Qz-f29"/>
+                <constraint firstItem="JVc-Ud-Rye" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ief-pQ-oWC"/>
+                <constraint firstItem="9XM-mL-Oyt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kVN-Tk-BYj"/>
+                <constraint firstAttribute="bottom" secondItem="JVc-Ud-Rye" secondAttribute="bottom" id="qfX-wH-pfu"/>
+                <constraint firstAttribute="bottom" secondItem="9XM-mL-Oyt" secondAttribute="bottom" id="sAN-o0-993"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundView" destination="9XM-mL-Oyt" id="RiS-si-fT1"/>
+                <outlet property="btnBackgroundView" destination="73o-6w-0JJ" id="yhg-ci-a62"/>
+                <outlet property="cancelBtn" destination="Fna-JK-l1r" id="C6w-cW-T1d"/>
+                <outlet property="finishBtn" destination="XW4-zA-Ucw" id="fSv-Gb-iu8"/>
+                <outlet property="maskView" destination="JVc-Ud-Rye" id="8sD-P0-lp8"/>
+                <outlet property="timePicker" destination="JjR-Mz-GBU" id="6jQ-A3-O5v"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SLPMinuteSelectView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3E-eQ-LG9">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6N-Qd-jeV">
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0c-IA-elv">
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q70-4s-v9a">
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="eHC-0f-GqI"/>
+                                        <constraint firstAttribute="height" constant="44" id="yRT-3y-Mda"/>
+                                    </constraints>
+                                    <state key="normal" title="取消"/>
+                                    <connections>
+                                        <action selector="cancelBtnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="RI7-iV-nwg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9V-Is-dnH">
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="K3g-tb-gcz"/>
+                                        <constraint firstAttribute="height" constant="44" id="Xa4-7w-xxG"/>
+                                    </constraints>
+                                    <state key="normal" title="完成"/>
+                                    <connections>
+                                        <action selector="finishBtnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="p7d-fd-LdH"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="O9V-Is-dnH" firstAttribute="top" secondItem="E0c-IA-elv" secondAttribute="topMargin" id="NA8-oD-iKZ"/>
+                                <constraint firstItem="O9V-Is-dnH" firstAttribute="baseline" secondItem="q70-4s-v9a" secondAttribute="baseline" id="Oim-16-RAa"/>
+                                <constraint firstItem="q70-4s-v9a" firstAttribute="leading" secondItem="E0c-IA-elv" secondAttribute="leading" constant="4" id="dQR-TZ-Ngk"/>
+                                <constraint firstAttribute="trailing" secondItem="O9V-Is-dnH" secondAttribute="trailing" constant="4" id="q6x-Hc-kia"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esZ-UN-64n" customClass="SLPMinutePicker">
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="5ui-6Z-HWg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="esZ-UN-64n" secondAttribute="trailing" constant="15" id="31y-5f-hY4"/>
+                        <constraint firstAttribute="trailing" secondItem="E0c-IA-elv" secondAttribute="trailing" id="34S-4x-Qzf"/>
+                        <constraint firstAttribute="bottom" secondItem="esZ-UN-64n" secondAttribute="bottom" id="IWO-ju-Jik"/>
+                        <constraint firstItem="E0c-IA-elv" firstAttribute="leading" secondItem="N6N-Qd-jeV" secondAttribute="leading" id="NeH-Qu-sAR"/>
+                        <constraint firstItem="esZ-UN-64n" firstAttribute="top" secondItem="E0c-IA-elv" secondAttribute="bottom" id="qBc-OG-7Si"/>
+                        <constraint firstItem="esZ-UN-64n" firstAttribute="leading" secondItem="N6N-Qd-jeV" secondAttribute="leading" constant="15" id="txh-j8-jax"/>
+                        <constraint firstItem="E0c-IA-elv" firstAttribute="top" secondItem="N6N-Qd-jeV" secondAttribute="top" id="wby-x1-eBI"/>
+                        <constraint firstAttribute="height" constant="260" id="y7K-lP-jF7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="J3E-eQ-LG9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Go-kQ-Bjp"/>
+                <constraint firstAttribute="bottom" secondItem="J3E-eQ-LG9" secondAttribute="bottom" id="SFd-Vc-OzE"/>
+                <constraint firstAttribute="bottom" secondItem="N6N-Qd-jeV" secondAttribute="bottom" id="WqT-jb-Lkh"/>
+                <constraint firstItem="J3E-eQ-LG9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bKk-e4-OHZ"/>
+                <constraint firstItem="N6N-Qd-jeV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dd4-NG-Dz7"/>
+                <constraint firstAttribute="trailing" secondItem="J3E-eQ-LG9" secondAttribute="trailing" id="jXV-eW-DEl"/>
+                <constraint firstAttribute="trailing" secondItem="N6N-Qd-jeV" secondAttribute="trailing" id="uCK-yf-aOl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundView" destination="N6N-Qd-jeV" id="PI3-AF-5bZ"/>
+                <outlet property="btnBackgroundView" destination="E0c-IA-elv" id="RBq-Dh-02b"/>
+                <outlet property="cancelBtn" destination="q70-4s-v9a" id="48M-Ac-Q08"/>
+                <outlet property="finishBtn" destination="O9V-Is-dnH" id="f9s-YF-HZg"/>
+                <outlet property="maskView" destination="J3E-eQ-LG9" id="J42-ij-HiE"/>
+                <outlet property="timePicker" destination="esZ-UN-64n" id="Ul2-pI-I1z"/>
+            </connections>
+            <point key="canvasLocation" x="303" y="431"/>
+        </view>
+    </objects>
+</document>

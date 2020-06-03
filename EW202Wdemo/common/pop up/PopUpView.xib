@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PopUpView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARD-pG-EqN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ybm-fD-zwN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jl-4A-EVK">
+                            <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="Bta-kJ-IMJ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7jl-4A-EVK" secondAttribute="trailing" id="6yx-UV-KqH"/>
+                        <constraint firstItem="7jl-4A-EVK" firstAttribute="leading" secondItem="Ybm-fD-zwN" secondAttribute="leading" id="ceQ-lF-DxT"/>
+                        <constraint firstAttribute="bottom" secondItem="7jl-4A-EVK" secondAttribute="bottom" id="fMy-T9-rfJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ybm-fD-zwN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Ns-4R-zFM"/>
+                <constraint firstAttribute="trailing" secondItem="ARD-pG-EqN" secondAttribute="trailing" id="6TG-g8-E3l"/>
+                <constraint firstItem="Ybm-fD-zwN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LyF-ku-IZE"/>
+                <constraint firstItem="ARD-pG-EqN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OyG-5h-ufK"/>
+                <constraint firstAttribute="bottom" secondItem="ARD-pG-EqN" secondAttribute="bottom" id="PYh-ag-hXT"/>
+                <constraint firstItem="ARD-pG-EqN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VVz-42-tgN"/>
+                <constraint firstAttribute="bottom" secondItem="Ybm-fD-zwN" secondAttribute="bottom" id="hff-tZ-xp1"/>
+                <constraint firstAttribute="trailing" secondItem="Ybm-fD-zwN" secondAttribute="trailing" id="rUD-fg-giy"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="Ybm-fD-zwN" id="ZQV-E9-9yY"/>
+                <outlet property="contentBottomEdge" destination="fMy-T9-rfJ" id="rV6-fE-jyv"/>
+                <outlet property="contentHeight" destination="Bta-kJ-IMJ" id="1kz-iO-ulh"/>
+                <outlet property="contentView" destination="7jl-4A-EVK" id="rQr-SX-cDg"/>
+                <outlet property="maskView" destination="ARD-pG-EqN" id="zap-hf-LOj"/>
+            </connections>
+        </view>
+    </objects>
+</document>

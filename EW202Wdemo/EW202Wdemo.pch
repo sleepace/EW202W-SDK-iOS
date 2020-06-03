@@ -1,0 +1,24 @@
+//
+//  EW202Wdemo.pch
+//  EW202Wdemo
+//
+//  Created by Michael on 2020/5/19.
+//  Copyright © 2020 medica. All rights reserved.
+//
+
+#ifndef EW202Wdemo_pch
+#define EW202Wdemo_pch
+
+#import "UtilsHeads.h"
+#import "consts.h"
+#import "Theme.h"
+#import "Coordinate.h"
+#import "DataManager.h"
+#import "SLPUtilHeads.h"
+#import <SLPTCP/SLPTCP.h>
+#import <BLEWifiConfig/BLEWifiConfig.h>
+#import <EW202W/EW202W.h>
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* EW202Wdemo_pch */

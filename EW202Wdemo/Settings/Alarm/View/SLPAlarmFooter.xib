@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SLPAlarmFooter">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbg-e9-6sP">
+                    <rect key="frame" x="15" y="10" width="290" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="0x0-my-ouN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="589-W8-tb3">
+                    <rect key="frame" x="30" y="125.5" width="260" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="yXH-3q-T30"/>
+                    </constraints>
+                    <connections>
+                        <action selector="deleteButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="UHD-js-bdf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxm-Co-WoA">
+                    <rect key="frame" x="30" y="60.5" width="260" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="AEL-TC-dK9"/>
+                    </constraints>
+                    <connections>
+                        <action selector="previewButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="GAl-g9-8QA"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Pbg-e9-6sP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="6gv-CN-o8m"/>
+                <constraint firstItem="589-W8-tb3" firstAttribute="top" secondItem="Qxm-Co-WoA" secondAttribute="bottom" constant="15" id="HiC-hM-M5B"/>
+                <constraint firstAttribute="trailing" secondItem="Qxm-Co-WoA" secondAttribute="trailing" constant="30" id="PO5-F6-aM0"/>
+                <constraint firstItem="Qxm-Co-WoA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="S1L-5Y-ePb"/>
+                <constraint firstItem="589-W8-tb3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yt0-Pv-1GX"/>
+                <constraint firstItem="Qxm-Co-WoA" firstAttribute="top" secondItem="Pbg-e9-6sP" secondAttribute="bottom" constant="30" id="hUX-dX-dfD"/>
+                <constraint firstItem="Pbg-e9-6sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="km9-Gc-WCM"/>
+                <constraint firstAttribute="trailing" secondItem="Pbg-e9-6sP" secondAttribute="trailing" constant="15" id="q2L-6v-QTS"/>
+                <constraint firstItem="589-W8-tb3" firstAttribute="width" secondItem="Qxm-Co-WoA" secondAttribute="width" id="yeL-tZ-Ds2"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="589-W8-tb3" id="qGA-8L-CIA"/>
+                <outlet property="label" destination="Pbg-e9-6sP" id="0vg-CF-bUq"/>
+                <outlet property="previewBtn" destination="Qxm-Co-WoA" id="R01-ya-RMv"/>
+                <outlet property="previewTopEdge" destination="hUX-dX-dfD" id="Y1N-MI-cMf"/>
+            </connections>
+            <point key="canvasLocation" x="-183" y="270"/>
+        </view>
+    </objects>
+</document>

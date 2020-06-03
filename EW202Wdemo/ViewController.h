@@ -1,9 +1,9 @@
 //
 //  ViewController.h
-//  EW202Wdemo
+//  BLENox2Demo
 //
-//  Created by Michael on 2020/5/17.
-//  Copyright © 2020 medica. All rights reserved.
+//  Created by jie yang on 2019/7/29.
+//  Copyright © 2019 jie yang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
