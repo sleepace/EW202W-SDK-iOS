@@ -1,0 +1,6 @@
+framework module EW202W {
+  umbrella header "EW202W.h"
+
+  export *
+  module * { export * }
+}
