@@ -42,7 +42,7 @@
     self.alramList = [NSArray array];
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wGetAlarmListWithDeviceInfo:SharedDataManager.deviceID timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager getAlarmListWithDeviceInfo:SharedDataManager.deviceID ip:@"" timeout:0 completion:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
             weakSelf.alramList = data;
         }
@@ -54,6 +54,33 @@
         }else{
             weakSelf.tableView.hidden = YES;
             weakSelf.emptyView.hidden = NO;
+            
+            [weakSelf addAlarm];
+        }
+    }];
+}
+
+- (void)addAlarm
+{
+    SLPAlarmInfo *info = [SLPAlarmInfo new];
+    
+    info.alarmID = 0;
+    info.isOpen = YES;
+    info.hour = 8;
+    info.minute = 0;
+    info.flag = 0;
+    info.snoozeTime = 6;
+    info.snoozeLength = 9;
+    info.volume = 16;
+    info.brightness = 100;
+    info.musicID = 31098;
+    info.timestamp = 0;
+    info.enable = YES;
+    __weak typeof(self) weakSelf = self;
+    [SLPSharedLTcpManager alarmConfig:info deviceInfo:@"EW22W20C00044" deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+        NSLog(@"addAlarm------- %ld",(long)status);
+        if (status == SLPDataTransferStatus_Succeed) {
+            [weakSelf loadData];
         }
     }];
 }
@@ -106,7 +133,7 @@
 {
     TitleValueSwitchCellTableViewCell *cell = (TitleValueSwitchCellTableViewCell *)[SLPUtils tableView:tableView cellNibName:@"TitleValueSwitchCellTableViewCell"];
     
-    EW202WAlarmInfo *alarmData = [self.alramList objectAtIndex:indexPath.row];
+    SLPAlarmInfo *alarmData = [self.alramList objectAtIndex:indexPath.row];
     cell.titleLabel.text = [self getAlarmTimeStringWithDataModle:alarmData];
     cell.subTitleLbl.text = [SLPWeekDay getAlarmRepeatDayStringWithWeekDay:alarmData.flag];
     cell.switcher.on = alarmData.isOpen;
@@ -123,11 +150,11 @@
     return cell;
 }
 
-- (void)turnOnAlarmWithAlarm:(EW202WAlarmInfo *)alarmInfo
+- (void)turnOnAlarmWithAlarm:(SLPAlarmInfo *)alarmInfo
 {
     __weak typeof(self) weakSelf = self;
     alarmInfo.isOpen = YES;
-    [SLPSharedLTcpManager ew202wAlarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
             alarmInfo.isOpen = NO;
@@ -138,11 +165,11 @@
     }];
 }
 
-- (void)turnOffAlarmWithAlarm:(EW202WAlarmInfo *)alarmInfo
+- (void)turnOffAlarmWithAlarm:(SLPAlarmInfo *)alarmInfo
 {
     __weak typeof(self) weakSelf = self;
     alarmInfo.isOpen = NO;
-    [SLPSharedLTcpManager ew202wAlarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
             alarmInfo.isOpen = YES;
@@ -157,12 +184,12 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    EW202WAlarmInfo *alarmData = [self.alramList objectAtIndex:indexPath.row];
+    SLPAlarmInfo *alarmData = [self.alramList objectAtIndex:indexPath.row];
     
     [self goAlarmVCWithAlarmData:alarmData];
 }
 
-- (void)goAlarmVCWithAlarmData:(EW202WAlarmInfo *)alarmData
+- (void)goAlarmVCWithAlarmData:(SLPAlarmInfo *)alarmData
 {
     AlarmViewController *vc = [AlarmViewController new];
     vc.delegate = self;
@@ -176,8 +203,10 @@
     return 80;
 }
 
-- (NSString *)getAlarmTimeStringWithDataModle:(EW202WAlarmInfo *)dataModel {
-    return [SLPUtils timeStringFrom:dataModel.hour minute:dataModel.minute isTimeMode24:[SLPUtils isTimeMode24]];
+- (NSString *)getAlarmTimeStringWithDataModle:(SLPAlarmInfo *)dataModel {
+    NSString *time = [SLPUtils timeStringFrom:dataModel.hour minute:dataModel.minute isTimeMode24:[SLPUtils isTimeMode24]];
+    NSString *alarmType = (dataModel.alarmID == 0) ? LocalizedString(@"本地闹钟") : LocalizedString(@"云闹钟");
+    return [NSString stringWithFormat:@"%@ -- %@",time,alarmType];
 }
 
 - (void)editAlarmInfoAndShouldReload

@@ -16,6 +16,8 @@
 
 @interface ControlSleepAidViewController ()<UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
+
 // 第一段
 @property (weak, nonatomic) IBOutlet UILabel *musicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *musicNameLabel;
@@ -72,6 +74,7 @@
 @property (nonatomic, strong) NSMutableArray *musicList;
 
 @property (nonatomic, assign) BOOL isPlayingMusic;
+@property (nonatomic, assign) CGFloat offset;
 
 @end
 
@@ -83,62 +86,62 @@
         
         MusicInfo *musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31086;
-        musicInfo.musicName = LocalizedString(@"music_list_sea");
+        musicInfo.musicName = LocalizedString(@"music_list_You");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31087;
-        musicInfo.musicName = LocalizedString(@"music_list_sun");
+        musicInfo.musicName = LocalizedString(@"music_list_Moon");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31088;
-        musicInfo.musicName = LocalizedString(@"music_list_dance");
+        musicInfo.musicName = LocalizedString(@"music_list_Here");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31089;
-        musicInfo.musicName = LocalizedString(@"music_list_star");
+        musicInfo.musicName = LocalizedString(@"music_list_Journey");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31090;
-        musicInfo.musicName = LocalizedString(@"music_list_solo");
+        musicInfo.musicName = LocalizedString(@"music_list_World");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31091;
-        musicInfo.musicName = LocalizedString(@"music_list_rain");
+        musicInfo.musicName = LocalizedString(@"music_list_Baby");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31092;
-        musicInfo.musicName = LocalizedString(@"music_list_wind");
+        musicInfo.musicName = LocalizedString(@"music_list_Lullaby");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31093;
-        musicInfo.musicName = LocalizedString(@"music_list_summer");
+        musicInfo.musicName = LocalizedString(@"music_list_star");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31094;
-        musicInfo.musicName = LocalizedString(@"music_list_summer");
+        musicInfo.musicName = LocalizedString(@"music_list_sun");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31095;
-        musicInfo.musicName = LocalizedString(@"music_list_summer");
+        musicInfo.musicName = LocalizedString(@"music_list_sea");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31096;
-        musicInfo.musicName = LocalizedString(@"music_list_summer");
+        musicInfo.musicName = LocalizedString(@"music_list_rain");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31097;
-        musicInfo.musicName = LocalizedString(@"music_list_summer");
+        musicInfo.musicName = LocalizedString(@"music_list_dance");
         [_musicList addObject:musicInfo];
     }
     
@@ -148,6 +151,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addNotifications];
 //    [self setUI];
 }
 
@@ -162,36 +166,61 @@
     
     [self setUI];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFiledEditChanged:)name:UITextFieldTextDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFiledEditChanged:)name:UITextFieldTextDidChangeNotification object:nil];
 }
 
--(void)textFiledEditChanged:(NSNotification*)obj {
-    UITextField *textField = (UITextField *)obj.object;
-    NSString *toBeString = textField.text;
-    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
-    if ([lang isEqualToString:@"zh-Hans"]) { //简体中文输入，包括简体拼音，健体五笔，简体手写
-        UITextRange *selectedRange = [textField markedTextRange];
-        //获取高亮部分
-        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
-        //没有高亮选择的字，则对已输入的文字进行字数统计和限制
-        if (!position) {
-            if(toBeString.length > 3) {
-                textField.text = [toBeString substringToIndex:3];
-            }
-            
-        }
-        //有高亮选择的字符串，则暂不对文字进行统计和限制
-        else{
-            
-        }
-    }
-    //中文输入法以外的直接对其统计限制即可，不考虑其他语种情况：emoji表情、en-US
-    else{
-        if (toBeString.length > 3) {
-            textField.text= [toBeString substringToIndex:3];
-        }
-    }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//-(void)textFiledEditChanged:(NSNotification*)obj {
+//    UITextField *textField = (UITextField *)obj.object;
+//    NSString *toBeString = textField.text;
+//    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+//    if ([lang isEqualToString:@"zh-Hans"]) { //简体中文输入，包括简体拼音，健体五笔，简体手写
+//        UITextRange *selectedRange = [textField markedTextRange];
+//        //获取高亮部分
+//        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+//        //没有高亮选择的字，则对已输入的文字进行字数统计和限制
+//        if (!position) {
+//            if(toBeString.length > 3) {
+//                textField.text = [toBeString substringToIndex:3];
+//            }
+//
+//        }
+//        //有高亮选择的字符串，则暂不对文字进行统计和限制
+//        else{
+//
+//        }
+//    }
+//    //中文输入法以外的直接对其统计限制即可，不考虑其他语种情况：emoji表情、en-US
+//    else{
+//        if (toBeString.length > 3) {
+//            textField.text= [toBeString substringToIndex:3];
+//        }
+//    }
+//
+//}
+
+- (void)addNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    self.offset = self.scroll.bounds.origin.y;
+    //1. 获取键盘的 Y 值
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    [self.scroll setContentOffset:CGPointMake(0, self.offset + keyboardFrame.size.height)];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [self.scroll setContentOffset:CGPointMake(0, self.offset)];
 }
 
 - (void)setUI
@@ -349,9 +378,9 @@
     UInt8 vol = volume;
     
     __weak typeof(self) weakSelf = self;
-    EW202WAidInfo *aidInfo = [self localAidInfo];
+    SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.volume = vol;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -402,22 +431,22 @@
 
 - (void)playMusicWitCompletion:(void(^)(SLPDataTransferStatus status))completion
 {
-    EW202WAidInfo *aidInfo = [self localAidInfo];
+    SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.musicFlag = 1;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
-        if (completion) {
-            completion(status);
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+         if (completion) {
+             completion(status);
         }
     }];
 }
 
 - (void)stopMusicWitCompletion:(void(^)(SLPDataTransferStatus status))completion
 {
-    EW202WAidInfo *aidInfo = [self localAidInfo];
+    SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.musicFlag = 0;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
-        if (completion) {
-            completion(status);
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+         if (completion) {
+             completion(status);
         }
     }];
 }
@@ -457,14 +486,15 @@
 
     __weak typeof(self) weakSelf = self;
     
-    EW202WAidInfo *aidInfo = [self localAidInfo];
+    SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.lightFlag = 1;
     aidInfo.r = r;
     aidInfo.g = g;
     aidInfo.b = b;
     aidInfo.w = w;
     aidInfo.brightness = brightness;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
             SharedDataManager.aidInfo = aidInfo;
         }else{
@@ -489,11 +519,11 @@
 }
 
 - (IBAction)openLightAction:(UIButton *)sender {
-    EW202WAidInfo *aidInfo = [[EW202WAidInfo alloc] init];
+    SLPAidInfo *aidInfo = [[SLPAidInfo alloc] init];
     aidInfo.lightFlag = 0;
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }
@@ -552,10 +582,10 @@
         return;
     }
     
-    EW202WAidInfo *aidInfo = [self currentAidInfo];
+    SLPAidInfo *aidInfo = [self currentAidInfo];
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wConfigAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -583,14 +613,18 @@
     } cancelHandle:nil];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.view endEditing:YES];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];//结束编辑状态，即可以关闭键盘
 }
 
--(EW202WAidInfo *)localAidInfo
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    [self.view endEditing:YES];
+//}
+
+-(SLPAidInfo *)localAidInfo
 {
-    EW202WAidInfo *info = [EW202WAidInfo new];
+    SLPAidInfo *info = [SLPAidInfo new];
     
     info.musicFlag = SharedDataManager.aidInfo.musicFlag;
     info.musicID = SharedDataManager.aidInfo.musicID;
@@ -607,9 +641,9 @@
     return info;
 }
 
--(EW202WAidInfo *)currentAidInfo
+-(SLPAidInfo *)currentAidInfo
 {
-    EW202WAidInfo *info = [EW202WAidInfo new];
+    SLPAidInfo *info = [SLPAidInfo new];
     
     info.musicFlag = self.stopMusicBtn.selected;
     info.musicID = SharedDataManager.aidInfo.musicID;

@@ -242,3 +242,14 @@
 "obtain_id_cipher"="Obtain Device ID (cipher)";
 "device_network"="Make sure the device is turned on and connected to an available network";
 "turn_on_period"="After turning on, the display will go out within the set time period";
+"login_in"="Log in";
+"server_information1"="Server Information";
+"server_http"="Enter the Server Address (http or https)";
+"enter_id"="Enter Channel ID";
+"enter_token"="Enter Token";
+"connect_server"="Connect to the server";
+"connect_dev"="Connected Devices";
+"id_cipher"="Enter the device ID (cipher text)";
+"target_version"="Enter the target firmware version";
+"dididi"="Di Di Di";
+"music_box"="Little Music Box";

@@ -83,5 +83,6 @@ static const NSInteger kHttpAddressLength = 128;
 + (NSString *)addPathComponent:(NSString *)patchComponent toRoot:(NSString *)root;
 
 + (NSString *)convertJasonDictionaryToString:(NSDictionary *)jasonDic;
++ (NSInteger)stringVersionToInterger:(NSString*)ver;
 
 @end

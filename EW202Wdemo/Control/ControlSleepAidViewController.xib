@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,6 +30,7 @@
                 <outlet property="musicNameLabel" destination="93p-UR-yIJ" id="Pha-zR-O8W"/>
                 <outlet property="openLightBtn" destination="wgp-or-eI8" id="gbI-OG-y8S"/>
                 <outlet property="saveBtn" destination="LOi-CT-zSN" id="7hD-GE-Vz1"/>
+                <outlet property="scroll" destination="EbF-F0-T1g" id="gTq-LW-7BB"/>
                 <outlet property="sendBrightnessBtn" destination="JVt-gN-lvH" id="L5g-96-ieR"/>
                 <outlet property="sendBtn" destination="8Pr-r3-Fo5" id="aae-uF-QOE"/>
                 <outlet property="sendColorBtn" destination="VPZ-6n-LzR" id="FJn-NE-4xx"/>
@@ -130,7 +129,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="hrv-LR-3pQ"/>
                                             </constraints>
-                                            <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
@@ -204,7 +202,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0~255" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K95-BF-kSU">
                                                             <rect key="frame" x="21" y="0.0" width="84" height="50"/>
-                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
@@ -230,7 +227,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0~120" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3A5-JC-MRQ">
                                                             <rect key="frame" x="22.5" y="0.0" width="82.5" height="50"/>
-                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
@@ -256,7 +252,6 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0~255" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ain-6N-0ni">
                                                             <rect key="frame" x="21" y="0.0" width="84" height="50"/>
-                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
@@ -300,7 +295,6 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0~255" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYu-L1-leD">
                                                     <rect key="frame" x="26.5" y="0.0" width="193.5" height="50"/>
-                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
@@ -338,7 +332,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="IVI-XO-yem"/>
                                             </constraints>
-                                            <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>

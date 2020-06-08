@@ -21,6 +21,8 @@
 @property (nonatomic, assign) BOOL connected;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *plat;
+@property (nonatomic, strong) NSString *channelID;
 
 @property (nonatomic, assign) NSInteger selectItemsNum;
 
@@ -28,7 +30,7 @@
 
 @property (nonatomic, assign) NSInteger volumn;
 
-@property (nonatomic, strong) EW202WAidInfo *aidInfo;
+@property (nonatomic, strong) SLPAidInfo *aidInfo;
 
 @property (nonatomic, assign) int waveAction;
 
@@ -38,7 +40,7 @@
 
 @property (nonatomic, assign) NSInteger timeFormat;
 
-@property (nonatomic, strong) EW202WClockDormancyBean *bean;
+@property (nonatomic, strong) SLPClockDormancyBean *bean;
 
 @property (nonatomic, assign) BOOL synServerTime;
 

@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) BOOL synServerTime;
 @property (nonatomic,assign) NSInteger timeFormat;
-@property (nonatomic, strong) EW202WClockDormancyBean *bean;
+@property (nonatomic, strong) SLPClockDormancyBean *bean;
 
 @end
 
@@ -72,7 +72,7 @@
 {
     self.timeFormat = SharedDataManager.timeFormat;
     
-    self.bean = [EW202WClockDormancyBean new];
+    self.bean = [SLPClockDormancyBean new];
     self.bean.flag = SharedDataManager.bean.flag;
     self.bean.startHour = SharedDataManager.bean.startHour;
     self.bean.endHour = SharedDataManager.bean.endHour;
@@ -213,7 +213,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (NSString *)getTimeStringWithDataModle:(EW202WClockDormancyBean *)dataModel {
+- (NSString *)getTimeStringWithDataModle:(SLPClockDormancyBean *)dataModel {
     NSString *start = [SLPUtils timeStringFrom:dataModel.startHour minute:dataModel.startMin isTimeMode24:(self.timeFormat == 24)];
     NSString *end = [SLPUtils timeStringFrom:dataModel.endHour minute:dataModel.endMin isTimeMode24:(self.timeFormat == 24)];
     return [NSString stringWithFormat:@"%@~%@",start,end];

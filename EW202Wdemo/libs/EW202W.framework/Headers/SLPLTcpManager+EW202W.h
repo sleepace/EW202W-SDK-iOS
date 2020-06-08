@@ -45,25 +45,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)ew202wGetWorkStatusWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
-
-/**
- 获取闹钟列表
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调 返回 NSArray<SABAlarmInfo *>
- */
-- (void)ew202wGetAlarmListWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout completion:(SLPTransforCallback)handle;
-
-
-/**
- 添加，修改和删除闹铃
- @param deviceName 设备名称
- @param alarmInfo 闹钟信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-- (void)ew202wAlarmConfig:(EW202WAlarmInfo *)alarmInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
 /**
  闹铃预览，退出预览
  @param deviceName 设备名称
@@ -100,43 +81,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 - (void)ew202wAlarmMusicOperation:(UInt8)operation musicID:(UInt16)musicID volume:(UInt8)volume deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 时钟休眠设置
- @param deviceName 设备名称
- @param clockDormancyBean 时钟休眠信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wConfigClockDormancy:(EW202WClockDormancyBean *)clockDormancyBean deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 时钟休眠获取
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wGetClockDormancyWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 助眠操作
- @param deviceName 设备名称
- @param aidInfo 助眠信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wConfigAidInfo:(EW202WAidInfo *)aidInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 助眠配置获取
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调
-*/
-- (void)ew202wGetAidInfoWithDeviceInfo:(NSString *)deviceName timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  系统设置

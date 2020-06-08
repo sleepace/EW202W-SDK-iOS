@@ -242,3 +242,14 @@
 "obtain_id_cipher"="获取设备ID（密文）";
 "device_network"="确保设备开机，且已连接可用网络";
 "turn_on_period"="开启后，显示屏将会在设置的时间段内熄灭";
+"login_in"="登录";
+"server_information1"="服务器信息";
+"server_http"="输入服务器地址（http或https）";
+"enter_id"="输入渠道ID";
+"enter_token"="输入token";
+"connect_server"="连接服务器";
+"connect_dev"="连接的设备";
+"id_cipher"="输入设备ID（密文）";
+"target_version"="输入目标固件版本";
+"dididi"="嘀嘀嘀";
+"music_box"="八音盒";

@@ -51,7 +51,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 
 @property (nonatomic, strong) NSMutableArray *musicList;
 
-@property (strong, nonatomic) EW202WAlarmInfo *alarmDataNew;
+@property (strong, nonatomic) SLPAlarmInfo *alarmDataNew;
 
 @end
 
@@ -68,27 +68,27 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31099;
-        musicInfo.musicName = LocalizedString(@"alarm_list_2");
-        [_musicList addObject:musicInfo];
-        
-        musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31100;
         musicInfo.musicName = LocalizedString(@"alarm_list_3");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
+        musicInfo.musicID = 31100;
+        musicInfo.musicName = LocalizedString(@"dididi");
+        [_musicList addObject:musicInfo];
+        
+        musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31101;
-        musicInfo.musicName = LocalizedString(@"alarm_list_4");
+        musicInfo.musicName = LocalizedString(@"music_box");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31102;
-        musicInfo.musicName = LocalizedString(@"alarm_list_5");
+        musicInfo.musicName = LocalizedString(@"alarm_list_9");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
         musicInfo.musicID = 31103;
-        musicInfo.musicName = LocalizedString(@"alarm_list_6");
+        musicInfo.musicName = LocalizedString(@"alarm_list_7");
         [_musicList addObject:musicInfo];
     }
     
@@ -110,7 +110,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 30, 0.001)];
     self.tableView.tableHeaderView = view;
-    self.alarmDataNew = [[EW202WAlarmInfo alloc] init];
+    self.alarmDataNew = [[SLPAlarmInfo alloc] init];
     if (self.alarmPageType == AlarmPageType_Add) {
         self.titleLabel.text = LocalizedString(@"add_alarm");
         
@@ -212,7 +212,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     [footer setDelegate:self];
     view = footer;
     
-    if (self.alarmPageType == AlarmPageType_Add){
+    if (self.alarmPageType == AlarmPageType_Add || self.alarmDataNew.alarmID == 0){
         [footer.deleteBtn setHidden:YES];
     }else {
         [footer.deleteBtn setHidden:NO];
@@ -443,13 +443,13 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     return musicName;
 }
 
-- (NSString *)getAlarmTimeStringWithDataModle:(EW202WAlarmInfo *)dataModel {
+- (NSString *)getAlarmTimeStringWithDataModle:(SLPAlarmInfo *)dataModel {
     return [SLPUtils timeStringFrom:dataModel.hour minute:dataModel.minute isTimeMode24:[SLPUtils isTimeMode24]];
 }
 
 - (IBAction)saveAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wAlarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -503,7 +503,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 {
     __weak typeof(self) weakSelf = self;
     self.alarmDataNew.enable = NO;
-    [SLPSharedLTcpManager ew202wAlarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -511,7 +511,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
             int index = 0;
             BOOL isExist = NO;
             for (int i = 0; i < SharedDataManager.alarmList.count; i++) {
-                EW202WAlarmInfo *info = [SharedDataManager.alarmList objectAtIndex:i];
+                SLPAlarmInfo *info = [SharedDataManager.alarmList objectAtIndex:i];
                 if (info.alarmID == self.alarmDataNew.alarmID) {
                     isExist = YES;
                     index = i;

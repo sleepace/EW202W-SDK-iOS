@@ -112,7 +112,7 @@
     [loadingView setText:LocalizedString(@"start_network")];
     [[SLPBleWifiConfig sharedBleWifiConfig] configPeripheral:SharedDataManager.peripheral deviceType:SLPDeviceType_EW202W serverAddress:self.serverIP.text port:self.serverPort.text.integerValue wifiName:self.serverWIFIName.text password:self.serverWIFIPassword.text completion:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
-            [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID loginHost:weakSelf.serverIP.text port:weakSelf.serverPort.text.integerValue token:@"" channelID:@"" completion:^(SLPDataTransferStatus status, id data) {
+            [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID completion:^(SLPDataTransferStatus status, id data) {
                 if (status == SLPDataTransferStatus_Succeed) {
                     SharedDataManager.connected = YES;
                     [[NSUserDefaults standardUserDefaults] setValue:self.serverIP.text forKey:@"serverIP"];
@@ -154,7 +154,7 @@
 {
     __weak typeof(self) weakSelf = self;
     if (self.tokenTextField.text.length > 0) {
-        [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:@"http://172.14.1.100:9080" thirdPlatform:@"123456987" channelID:63100 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+        [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:@"http://172.14.1.100:9080" channelID:63100 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
             if (status == SLPDataTransferStatus_Succeed) {
                 [Utils showMessage:LocalizedString(@"成功") controller:self];
                 SharedDataManager.token = weakSelf.tokenTextField.text;

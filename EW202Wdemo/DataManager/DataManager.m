@@ -25,7 +25,7 @@
         _selectItemsNum = 7;
         _assistMusicID = 30086;
         
-        _aidInfo = [[EW202WAidInfo alloc] init];
+        _aidInfo = [[SLPAidInfo alloc] init];
         _aidInfo.aidStopDuration = 1;
         _aidInfo.r = 255;
         _aidInfo.b = 0;
@@ -42,7 +42,7 @@
         _timeFormat = 12;
         _synServerTime = YES;
         
-        _bean = [EW202WClockDormancyBean new];
+        _bean = [SLPClockDormancyBean new];
         _bean.startHour = 22;
         _bean.startMin = 0;
         _bean.endHour = 7;
@@ -51,6 +51,8 @@
         
         _deviceID = @"";
         _token = @"";
+        _channelID = @"";
+        _plat = @"";
         
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"serverIP"]) {
             _serverIP = [[NSUserDefaults standardUserDefaults] valueForKey:@"serverIP"];
@@ -69,6 +71,12 @@
         }
         if ([[NSUserDefaults standardUserDefaults] valueForKey:@"token"]) {
             _token = [[NSUserDefaults standardUserDefaults] valueForKey:@"token"];
+        }
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"plat"]) {
+            _plat = [[NSUserDefaults standardUserDefaults] valueForKey:@"plat"];
+        }
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:@"channelID"]) {
+            _channelID = [[NSUserDefaults standardUserDefaults] valueForKey:@"channelID"];
         }
     }
     

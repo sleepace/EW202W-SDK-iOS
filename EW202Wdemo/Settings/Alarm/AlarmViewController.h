@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AlarmViewController : BaseViewController
 
-@property (strong, nonatomic) EW202WAlarmInfo *orignalAlarmData;
+@property (strong, nonatomic) SLPAlarmInfo *orignalAlarmData;
 
 @property (nonatomic, assign) NSInteger addAlarmID;
 

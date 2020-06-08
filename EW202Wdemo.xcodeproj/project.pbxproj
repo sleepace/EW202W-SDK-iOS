@@ -117,6 +117,8 @@
 		4C83628C2471853B00BA8553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C83628A2471853B00BA8553 /* LaunchScreen.storyboard */; };
 		4C83628F2471853B00BA8553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C83628E2471853B00BA8553 /* main.m */; };
 		4C8362972471859B00BA8553 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8362962471858900BA8553 /* libc++.tbd */; };
+		4C974CC02488C00B0019A6BB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C974CBF2488C00B0019A6BB /* NetworkExtension.framework */; };
+		4C974CC22488C24F0019A6BB /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C974CC12488C24F0019A6BB /* ExternalAccessory.framework */; };
 		4CAF29A224750F0A00FC09BD /* ClockDormancyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF29A024750F0A00FC09BD /* ClockDormancyViewController.m */; };
 		4CAF29A324750F0A00FC09BD /* ClockDormancyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAF29A124750F0A00FC09BD /* ClockDormancyViewController.xib */; };
 		AFBD2EE41C034FAC3E951850 /* libPods-EW202Wdemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7568CD758B1572D02691DCC8 /* libPods-EW202Wdemo.a */; };
@@ -299,6 +301,9 @@
 		4C83628D2471853B00BA8553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C83628E2471853B00BA8553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C8362962471858900BA8553 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4C974CBE2488C00B0019A6BB /* EW202WDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EW202WDemo.entitlements; sourceTree = "<group>"; };
+		4C974CBF2488C00B0019A6BB /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		4C974CC12488C24F0019A6BB /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		4CAF299F24750F0A00FC09BD /* ClockDormancyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClockDormancyViewController.h; sourceTree = "<group>"; };
 		4CAF29A024750F0A00FC09BD /* ClockDormancyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClockDormancyViewController.m; sourceTree = "<group>"; };
 		4CAF29A124750F0A00FC09BD /* ClockDormancyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockDormancyViewController.xib; sourceTree = "<group>"; };
@@ -312,11 +317,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C974CC22488C24F0019A6BB /* ExternalAccessory.framework in Frameworks */,
 				4C8362972471859B00BA8553 /* libc++.tbd in Frameworks */,
 				4C1219BF24751CA00008C3CC /* BLEWifiConfig.framework in Frameworks */,
 				4C3E0143247CB78B0038D7EF /* SLPTCP.framework in Frameworks */,
 				4C524C652473718D0008AFAE /* BluetoothManager.framework in Frameworks */,
 				4C524C672473718D0008AFAE /* SLPCommon.framework in Frameworks */,
+				4C974CC02488C00B0019A6BB /* NetworkExtension.framework in Frameworks */,
 				4C1219BC24751C870008C3CC /* EW202W.framework in Frameworks */,
 				AFBD2EE41C034FAC3E951850 /* libPods-EW202Wdemo.a in Frameworks */,
 			);
@@ -701,6 +708,7 @@
 		4C83627B2471853500BA8553 /* EW202Wdemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C974CBE2488C00B0019A6BB /* EW202WDemo.entitlements */,
 				4C524CAE24737B4D0008AFAE /* ConfigWIFI */,
 				4C524BE72473718C0008AFAE /* libs */,
 				4C524C5E2473718D0008AFAE /* Main */,
@@ -732,6 +740,8 @@
 		4C8362952471858900BA8553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C974CC12488C24F0019A6BB /* ExternalAccessory.framework */,
+				4C974CBF2488C00B0019A6BB /* NetworkExtension.framework */,
 				4C8362962471858900BA8553 /* libc++.tbd */,
 				7568CD758B1572D02691DCC8 /* libPods-EW202Wdemo.a */,
 			);
@@ -1115,6 +1125,7 @@
 			baseConfigurationReference = E0B35C55266279D3833B4EA3 /* Pods-EW202Wdemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EW202Wdemo/EW202WDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV3296URNT;
 				ENABLE_BITCODE = NO;
@@ -1147,7 +1158,7 @@
 					"-force_load",
 					"$(SRCROOT)/EW202Wdemo/libs/SLPTCP.framework/SLPTCP",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medica..EW202Wdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medica.EW202Wdemo;
 				PRODUCT_NAME = EW202WDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1158,6 +1169,7 @@
 			baseConfigurationReference = 88A4F61D69FB0B4B6553C66E /* Pods-EW202Wdemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EW202Wdemo/EW202WDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV3296URNT;
 				ENABLE_BITCODE = NO;
@@ -1177,7 +1189,7 @@
 					$SRCROOT/EW202Wdemo/libs/BluetoothManager.framework/BluetoothManager,
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medica..EW202Wdemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medica.EW202Wdemo;
 				PRODUCT_NAME = EW202WDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

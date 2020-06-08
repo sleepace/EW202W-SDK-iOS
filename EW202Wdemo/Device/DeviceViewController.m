@@ -24,6 +24,8 @@
 //deviceInfo
 @property (nonatomic, weak) IBOutlet UITextField *ipTextField;
 @property (nonatomic, weak) IBOutlet UITextField *tokenTextField;
+@property (nonatomic, weak) IBOutlet UITextField *channelTextField;
+
 @property (nonatomic, weak) IBOutlet UIButton *connectBtn;
 @property (nonatomic, weak) IBOutlet UIView *deviceInfoShell;
 @property (nonatomic, weak) IBOutlet UILabel *deviceInfoSectionLabel;
@@ -90,14 +92,21 @@
     
     self.ipTextField.placeholder = LocalizedString(@"server_ip");
     self.tokenTextField.placeholder = LocalizedString(@"token");
+    self.channelTextField.placeholder = LocalizedString(@"ChannelID");
+
     self.deviceIDTextField.placeholder = LocalizedString(@"device_id");
     self.firmwareVersionTextField.placeholder = LocalizedString(@"固件版本");
-    self.ipTextField.text = @"http://172.14.1.100:9080";
-    self.deviceIDTextField.text = @"EW22W20C00045";
+    self.ipTextField.text = @"http://172.14.0.111:8082";
+    self.deviceIDTextField.text = @"EW22W20C00044";
     if (SharedDataManager.token.length > 0) {
         self.tokenTextField.text = SharedDataManager.token;
     } else {
         self.tokenTextField.text = @"kylhm2tu62sw";
+        self.tokenTextField.text = @"r8xfa7hdjcm6";
+    }
+    self.channelTextField.text = @"1";
+    if (SharedDataManager.channelID.length > 0) {
+        self.channelTextField.text = SharedDataManager.channelID;
     }
     
     self.ipTextField.delegate = self;
@@ -217,20 +226,28 @@
         [Utils showMessage:LocalizedString(@"token不能为空") controller:self];
         return;
     }
+    if (self.channelTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"ChannelID不能为空") controller:self];
+        return;
+    }
     
     [SLPSharedLTcpManager.lTcp disconnectCompletion:nil];
     
     SharedDataManager.deviceID = self.deviceIDTextField.text;
 
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:self.ipTextField.text thirdPlatform:@"123456987" channelID:63100 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:self.ipTextField.text channelID:self.channelTextField.text.intValue timeout:0 completion:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
             SharedDataManager.token = weakSelf.tokenTextField.text;
             [[NSUserDefaults standardUserDefaults] setValue:weakSelf.tokenTextField.text forKey:@"token"];
             
             NSString *str = SharedDataManager.deviceID;
             NSLog(@"deviceID ---- %@",str);
-            [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID loginHost:@"172.14.1.100" port:9010 token:@"" channelID:@"" completion:^(SLPDataTransferStatus status, id data) {
+            [[NSUserDefaults standardUserDefaults] setValue:self.channelTextField.text forKey:@"channelID"];
+
+            SharedDataManager.channelID = self.channelTextField.text;
+            
+            [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID completion:^(SLPDataTransferStatus status, id data) {
                 if (status == SLPDataTransferStatus_Succeed) {
                     SharedDataManager.connected = YES;
                     [Utils showMessage:LocalizedString(@"连接成功") controller:self];
@@ -282,7 +299,7 @@
     SLPLoadingBlockView *loadingView = [self showLoadingView];
     [loadingView setText:LocalizedString(@"upgrading")];
     
-    [SLPSharedLTcpManager publicUpdateOperationWithDeviceID:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W firmwareType:1 firmwareVersion:1.01 timeout:0 completion:^(SLPDataTransferReturnStatus status, id data) {
+    [SLPSharedLTcpManager publicUpdateOperationWithDeviceID:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W firmwareType:1 firmwareVersion:self.firmwareVersionTextField.text timeout:0 completion:^(SLPDataTransferReturnStatus status, id data) {
         if (status == SLPDataTransferReturnStatus_Succeed)///通知升级成功（获取进度)
         {
             ///接收nox升级进度

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceViewController">
             <connections>
+                <outlet property="channelTextField" destination="a9s-Df-XjM" id="Hmm-JV-8us"/>
                 <outlet property="connectBtn" destination="bSn-0u-6th" id="VNW-mA-ciB"/>
                 <outlet property="contentView" destination="nfi-p0-X9z" id="doh-1H-pAh"/>
                 <outlet property="deviceIDTextField" destination="Nhw-Ny-WgR" id="gxi-9j-XJi"/>
@@ -76,10 +77,10 @@
                     <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-p0-X9z" userLabel="content view">
-                            <rect key="frame" x="15" y="0.0" width="345" height="346.5"/>
+                            <rect key="frame" x="15" y="0.0" width="345" height="429"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-CH-J94">
-                                    <rect key="frame" x="0.0" y="15" width="345" height="137.5"/>
+                                    <rect key="frame" x="0.0" y="15" width="345" height="220"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="097-rd-A6t">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
@@ -99,31 +100,42 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSn-0u-6th">
-                                            <rect key="frame" x="245" y="70" width="100" height="50"/>
+                                            <rect key="frame" x="0.0" y="150" width="345" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="x7I-h6-AE8"/>
-                                                <constraint firstAttribute="width" constant="100" id="yDC-h3-JeQ"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="connectDevice:" destination="-1" eventType="touchUpInside" id="PX2-Zi-4sl"/>
                                             </connections>
                                         </button>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9s-Df-XjM">
+                                            <rect key="frame" x="195" y="70" width="150" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="4gg-hF-7Ph"/>
+                                                <constraint firstAttribute="width" constant="150" id="Nhi-N2-jPY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="bSn-0u-6th" secondAttribute="bottom" constant="20" id="3KG-bT-egW"/>
+                                        <constraint firstAttribute="trailing" secondItem="a9s-Df-XjM" secondAttribute="trailing" id="4fP-pm-xI2"/>
+                                        <constraint firstItem="a9s-Df-XjM" firstAttribute="top" secondItem="097-rd-A6t" secondAttribute="bottom" constant="20" id="6Wm-Zr-zmE"/>
                                         <constraint firstItem="097-rd-A6t" firstAttribute="top" secondItem="yrP-CH-J94" secondAttribute="top" id="7Af-Im-LqI"/>
                                         <constraint firstItem="097-rd-A6t" firstAttribute="leading" secondItem="yrP-CH-J94" secondAttribute="leading" id="JYu-QM-kp8"/>
-                                        <constraint firstItem="bSn-0u-6th" firstAttribute="top" secondItem="097-rd-A6t" secondAttribute="bottom" constant="20" id="LIw-1N-6Bt"/>
                                         <constraint firstItem="NCF-6E-TuM" firstAttribute="leading" secondItem="yrP-CH-J94" secondAttribute="leading" id="LdB-bc-Wnw"/>
-                                        <constraint firstAttribute="bottom" secondItem="NCF-6E-TuM" secondAttribute="bottom" constant="17.5" id="VuV-vQ-Xzt"/>
+                                        <constraint firstAttribute="bottom" secondItem="NCF-6E-TuM" secondAttribute="bottom" constant="100" id="VuV-vQ-Xzt"/>
+                                        <constraint firstItem="bSn-0u-6th" firstAttribute="leading" secondItem="yrP-CH-J94" secondAttribute="leading" id="YC5-f1-N96"/>
                                         <constraint firstItem="NCF-6E-TuM" firstAttribute="top" secondItem="097-rd-A6t" secondAttribute="bottom" constant="20" id="YI5-SB-24C"/>
                                         <constraint firstAttribute="trailing" secondItem="097-rd-A6t" secondAttribute="trailing" id="mmL-gg-Xuq"/>
                                         <constraint firstAttribute="trailing" secondItem="bSn-0u-6th" secondAttribute="trailing" id="wvY-KM-YPD"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-QC-Zsg">
-                                    <rect key="frame" x="0.0" y="177.5" width="345" height="144"/>
+                                    <rect key="frame" x="0.0" y="260" width="345" height="144"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nhw-Ny-WgR">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>

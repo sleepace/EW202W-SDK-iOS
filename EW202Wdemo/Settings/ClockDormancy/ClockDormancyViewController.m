@@ -27,7 +27,7 @@ static NSString *const kRowEnd = @"kRowEnd";
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSArray <SLPTableSectionData *>* sectionDataList;
-@property (nonatomic, strong) EW202WClockDormancyBean *bean;
+@property (nonatomic, strong) SLPClockDormancyBean *bean;
 @property (nonatomic,assign) NSInteger timeFormat;
 
 @end
@@ -47,7 +47,7 @@ static NSString *const kRowEnd = @"kRowEnd";
 
 - (void)loadData
 {
-    self.bean = [EW202WClockDormancyBean new];
+    self.bean = [SLPClockDormancyBean new];
     self.bean.flag = SharedDataManager.bean.flag;
     self.bean.startHour = SharedDataManager.bean.startHour;
     self.bean.endHour = SharedDataManager.bean.endHour;
@@ -80,7 +80,7 @@ static NSString *const kRowEnd = @"kRowEnd";
 - (IBAction)saveClock:(id)sender
 {
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wConfigClockDormancy:self.bean deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configClockDormancy:self.bean deviceInfo:SharedDataManager.deviceID ip:@"" timeOut:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -134,7 +134,6 @@ static NSString *const kRowEnd = @"kRowEnd";
         title = LocalizedString(@"end_time");
         cell.subTitleLabel.text = [SLPUtils timeStringFrom:self.bean.endHour minute:self.bean.endMin isTimeMode24:(self.timeFormat == 24)];
     }else if(indexPath.row == 0) {
-        title = LocalizedString(@"clock_sleep");
         TitleSwitchCell *switchCell = (TitleSwitchCell *)[SLPUtils tableView:tableView cellNibName:@"TitleSwitchCell"];
         switchCell.switcher.on = self.bean.flag;
         
@@ -146,7 +145,7 @@ static NSString *const kRowEnd = @"kRowEnd";
         };
         
         [Utils configCellTitleLabel:switchCell.textLabel];
-        switchCell.textLabel.text = LocalizedString(@"syn_server_time");
+        switchCell.textLabel.text = LocalizedString(@"clock_sleep");
         return switchCell;
     }
     [Utils configCellTitleLabel:cell.textLabel];
