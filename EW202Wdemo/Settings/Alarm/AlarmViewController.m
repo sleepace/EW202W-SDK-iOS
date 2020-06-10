@@ -449,7 +449,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 
 - (IBAction)saveAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -503,7 +503,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 {
     __weak typeof(self) weakSelf = self;
     self.alarmDataNew.enable = NO;
-    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{

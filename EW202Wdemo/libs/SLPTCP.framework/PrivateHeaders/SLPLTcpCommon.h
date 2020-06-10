@@ -99,6 +99,7 @@ typedef NS_ENUM(NSInteger,SLPLTCPMessagetUniqTypes) {
     SLPLTCPMessagetUniqType_EW202W_GetClockDormancyBean,
     SLPLTCPMessagetUniqType_EW202W_SetAidInfo,
     SLPLTCPMessagetUniqType_EW202W_ConfigSystem,
+    SLPLTCPMessagetUniqType_EW202W_GetSystem,
     SLPLTCPMessagetUniqType_EW202W_PostWorkMode,//EW202W主动发送的工作信息发生改变
     SLPlTCPMessagetUniqType_None,
 };

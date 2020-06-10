@@ -85,4 +85,5 @@ static const NSInteger kHttpAddressLength = 128;
 + (NSString *)convertJasonDictionaryToString:(NSDictionary *)jasonDic;
 + (NSInteger)stringVersionToInterger:(NSString*)ver;
 
++ (NSInteger)hexCodeWithString:(NSString *)value;
 @end

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/EW202W.h</key>
 		<data>
-		fwzrbixMF7k/XHKlqm+7EGS0SXs=
+		HycyUWargkj8vaD1XOss0uedIow=
 		</data>
 		<key>Headers/EW202WAidInfo.h</key>
 		<data>
@@ -24,6 +24,10 @@
 		<data>
 		qag6mnjHOn53ux1+ruGbq+LGFcI=
 		</data>
+		<key>Headers/EW202WSystemInfo.h</key>
+		<data>
+		/7gcHofdIDUco3RhCnl1J1HUeUc=
+		</data>
 		<key>Headers/EW202WWorkState.h</key>
 		<data>
 		6mYF0MLf/mBgpB8FIN59pQTnQ+A=
@@ -34,7 +38,7 @@
 		</data>
 		<key>Headers/SLPLTcpManager+EW202W.h</key>
 		<data>
-		JHSGh5C0bdBTYIYHhygqAUeYuvU=
+		A8/4Y+anh3gpLliVLtBbC8sg6dA=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -51,11 +55,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fwzrbixMF7k/XHKlqm+7EGS0SXs=
+			HycyUWargkj8vaD1XOss0uedIow=
 			</data>
 			<key>hash2</key>
 			<data>
-			xbohIvbWcUXB7Wz5XEbRG2IiVRKRW8Nwy9NwQsWZkkU=
+			UDhmOC4F7/i2oeR54Ut1Sn65g/mSg5eVLbaiRvUuYTI=
 			</data>
 		</dict>
 		<key>Headers/EW202WAidInfo.h</key>
@@ -102,6 +106,17 @@
 			ewdhOss1DkosxrX64MretoRuWfHLx89D/2TK2c7bN2Y=
 			</data>
 		</dict>
+		<key>Headers/EW202WSystemInfo.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/7gcHofdIDUco3RhCnl1J1HUeUc=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ad6YuHWaWo/qAcRs8I03JAkVGTXNf7CDxWSw656nNJA=
+			</data>
+		</dict>
 		<key>Headers/EW202WWorkState.h</key>
 		<dict>
 			<key>hash</key>
@@ -128,11 +143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JHSGh5C0bdBTYIYHhygqAUeYuvU=
+			A8/4Y+anh3gpLliVLtBbC8sg6dA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Q5BN+nIGBGuWbZ3o6awX7c9YZGmXAk6VzbhBmp7kaAo=
+			RpKRj+90j9XI7A38XaQpV0WZUW2u2rN5qIxIuGeGaKk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

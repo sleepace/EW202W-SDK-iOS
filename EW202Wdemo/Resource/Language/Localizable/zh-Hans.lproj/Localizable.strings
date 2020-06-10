@@ -253,3 +253,8 @@
 "target_version"="输入目标固件版本";
 "dididi"="嘀嘀嘀";
 "music_box"="八音盒";
+"connection_succeeded"="连接成功";
+"Connection_failed"="连接失败";
+"network_timeout"="网络不畅通，检查后再试试吧";
+"nox_connection_fail_tips"="%@连接失败，确保网络连接畅通";
+"build_alarm"="内置闹钟";

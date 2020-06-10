@@ -125,15 +125,15 @@
                     SharedDataManager.wifiName = self.serverWIFIName.text;
                     SharedDataManager.password = self.serverWIFIPassword.text;
 
-                    [Utils showMessage:LocalizedString(@"连接成功") controller:self];
+                    [Utils showMessage:LocalizedString(@"connection_succeeded") controller:self];
                 } else {
-                    [Utils showMessage:LocalizedString(@"连接失败") controller:self];
+                    [Utils showMessage:LocalizedString(@"Connection_failed") controller:self];
                 }
                 [weakSelf unshowLoadingView];
             }];
         } else {
             [weakSelf unshowLoadingView];
-            [Utils showMessage:LocalizedString(@"连接失败") controller:self];
+            [Utils showMessage:LocalizedString(@"Connection_failed") controller:self];
         }
     }];
 }
@@ -156,10 +156,10 @@
     if (self.tokenTextField.text.length > 0) {
         [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:@"http://172.14.1.100:9080" channelID:63100 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
             if (status == SLPDataTransferStatus_Succeed) {
-                [Utils showMessage:LocalizedString(@"成功") controller:self];
+                [Utils showMessage:LocalizedString(@"connection_succeeded") controller:self];
                 SharedDataManager.token = weakSelf.tokenTextField.text;
             } else {
-                [Utils showMessage:LocalizedString(@"失败") controller:self];
+                [Utils showMessage:LocalizedString(@"Connection_failed") controller:self];
             }
         }];
     } else {

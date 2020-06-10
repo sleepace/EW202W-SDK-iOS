@@ -12,6 +12,7 @@
 #import "EW202WAlarmInfo.h"
 #import "EW202WClockDormancyBean.h"
 #import "EW202WAidInfo.h"
+#import "EW202WSystemInfo.h"
 #import <SLPCommon/SLPCommon.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -96,6 +97,14 @@ NS_ASSUME_NONNULL_BEGIN
 */
 
 - (void)ew202wConfigSystem:(UInt8)operation value:(UInt8)value pincode:(NSString *)pincode deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+/**
+ 工作状态查询
+ @param deviceName 设备名称
+ @param timeout 超时（单位秒）
+ @param handle 回调 data类型为SABWorkStatus
+*/
+- (void)ew202wGetSystemWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /*固件升级通知
 deviceID           :设备ID

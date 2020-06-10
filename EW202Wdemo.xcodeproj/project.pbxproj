@@ -97,8 +97,6 @@
 		4C524CA32473718D0008AFAE /* device_btn_refresh_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C532473718C0008AFAE /* device_btn_refresh_nor@3x.png */; };
 		4C524CA42473718D0008AFAE /* common_nav_btn_back_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C542473718C0008AFAE /* common_nav_btn_back_nor@3x.png */; };
 		4C524CA52473718D0008AFAE /* common_nav_btn_back_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C552473718C0008AFAE /* common_nav_btn_back_nor@2x.png */; };
-		4C524CA62473718D0008AFAE /* SN902B_20200401.1.28_beta.MVA in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C562473718C0008AFAE /* SN902B_20200401.1.28_beta.MVA */; };
-		4C524CA72473718D0008AFAE /* SN902B_20180509.1.24_release.MVA in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C572473718C0008AFAE /* SN902B_20180509.1.24_release.MVA */; };
 		4C524CA82473718D0008AFAE /* Utils+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C524C5B2473718D0008AFAE /* Utils+UI.m */; };
 		4C524CA92473718D0008AFAE /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C524C5C2473718D0008AFAE /* Utils.m */; };
 		4C524CAA2473718D0008AFAE /* TabBarItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C524C602473718D0008AFAE /* TabBarItemCell.xib */; };
@@ -269,8 +267,6 @@
 		4C524C532473718C0008AFAE /* device_btn_refresh_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device_btn_refresh_nor@3x.png"; sourceTree = "<group>"; };
 		4C524C542473718C0008AFAE /* common_nav_btn_back_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_nav_btn_back_nor@3x.png"; sourceTree = "<group>"; };
 		4C524C552473718C0008AFAE /* common_nav_btn_back_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_nav_btn_back_nor@2x.png"; sourceTree = "<group>"; };
-		4C524C562473718C0008AFAE /* SN902B_20200401.1.28_beta.MVA */ = {isa = PBXFileReference; lastKnownFileType = file; path = SN902B_20200401.1.28_beta.MVA; sourceTree = "<group>"; };
-		4C524C572473718C0008AFAE /* SN902B_20180509.1.24_release.MVA */ = {isa = PBXFileReference; lastKnownFileType = file; path = SN902B_20180509.1.24_release.MVA; sourceTree = "<group>"; };
 		4C524C592473718D0008AFAE /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4C524C5A2473718D0008AFAE /* Utils+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Utils+UI.h"; sourceTree = "<group>"; };
 		4C524C5B2473718D0008AFAE /* Utils+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utils+UI.m"; sourceTree = "<group>"; };
@@ -590,8 +586,6 @@
 			children = (
 				4C524C3C2473718C0008AFAE /* Language */,
 				4C524C472473718C0008AFAE /* Image */,
-				4C524C562473718C0008AFAE /* SN902B_20200401.1.28_beta.MVA */,
-				4C524C572473718C0008AFAE /* SN902B_20180509.1.24_release.MVA */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -825,7 +819,6 @@
 				4C524C882473718D0008AFAE /* TitleSubTitleArrowCell.xib in Resources */,
 				4C8362892471853B00BA8553 /* Assets.xcassets in Resources */,
 				4C524BD7247371460008AFAE /* DeviceViewController.xib in Resources */,
-				4C524CA72473718D0008AFAE /* SN902B_20180509.1.24_release.MVA in Resources */,
 				4C524CB324737BA40008AFAE /* ConfigWIFIViewController.xib in Resources */,
 				4C524BD6247371460008AFAE /* TimePickerSelectView.xib in Resources */,
 				4C524C9F2473718D0008AFAE /* common_nav_btn_back_white_nor@3x.png in Resources */,
@@ -835,7 +828,6 @@
 				4C524C7A2473718D0008AFAE /* AlarmViewController.xib in Resources */,
 				4C524BD2247371460008AFAE /* HourMinutePicker.xib in Resources */,
 				4C524C7B2473718D0008AFAE /* MusicListViewController.xib in Resources */,
-				4C524CA62473718D0008AFAE /* SN902B_20200401.1.28_beta.MVA in Resources */,
 				4C524CA02473718D0008AFAE /* device_icon_choice@3x.png in Resources */,
 				4C524CA52473718D0008AFAE /* common_nav_btn_back_nor@2x.png in Resources */,
 				4C524C9D2473718D0008AFAE /* device_pic_nox2_handstop@2x.jpg in Resources */,

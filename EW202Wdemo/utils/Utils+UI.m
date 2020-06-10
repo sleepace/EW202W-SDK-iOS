@@ -109,7 +109,7 @@
         [self showAlertTitle:nil message:LocalizedString(@"phone_bluetooth_not_open")
                 confirmTitle:LocalizedString(@"confirm") atViewController:viewController];
     }else {
-        [self showAlertTitle:LocalizedString(@"device_connect_fail") message:LocalizedString(@"device_w_ble_connect_failed_tip")
+        [self showAlertTitle:LocalizedString(@"device_connect_fail") message:LocalizedString(@"network_timeout")
                 confirmTitle:LocalizedString(@"confirm") atViewController:viewController];
     }
 }

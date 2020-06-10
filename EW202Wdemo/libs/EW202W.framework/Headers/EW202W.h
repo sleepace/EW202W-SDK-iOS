@@ -11,6 +11,6 @@
 #import "SLPLTcpManager+EW202W.h"
 #import "SLPEW202WDef.h"
 
-#define kRestonVersion  @"1.0.0";
+#define kEW202WVersion  @"1.0.0";
 
 

@@ -42,7 +42,7 @@
     self.alramList = [NSArray array];
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager getAlarmListWithDeviceInfo:SharedDataManager.deviceID ip:@"" timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager getAlarmListWithDeviceInfo:SharedDataManager.deviceID  timeout:0 completion:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
             weakSelf.alramList = data;
         }
@@ -55,7 +55,7 @@
             weakSelf.tableView.hidden = YES;
             weakSelf.emptyView.hidden = NO;
             
-            [weakSelf addAlarm];
+//            [weakSelf addAlarm];
         }
     }];
 }
@@ -77,7 +77,7 @@
     info.timestamp = 0;
     info.enable = YES;
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager alarmConfig:info deviceInfo:@"EW22W20C00044" deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:info deviceInfo:@"EW22W20C00044" deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         NSLog(@"addAlarm------- %ld",(long)status);
         if (status == SLPDataTransferStatus_Succeed) {
             [weakSelf loadData];
@@ -113,14 +113,35 @@
         [Utils showMessage:LocalizedString(@"more_5") controller:self];
         return;
     }
-    
-    NSInteger alarmID = self.alramList.count;
-    
+
     AlarmViewController *vc = [AlarmViewController new];
-    vc.addAlarmID = alarmID;
+    vc.addAlarmID = [self requireMixNum];
     vc.delegate = self;
     vc.alarmPageType = AlarmPageType_Add;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (NSInteger)requireMixNum
+{
+    NSInteger num = 0;
+    
+    for (int i = 0; i < 5; i++) {
+        NSInteger count = 0;
+        for (SLPAlarmInfo *info in self.alramList) {
+            if (info.alarmID == i) {
+                break;
+            }
+            
+            count ++;
+        }
+        
+        if (count == self.alramList.count) {
+            num = i;
+            break;
+        }
+    }
+    
+    return num;
 }
 
 #pragma mark - tableView delegate
@@ -154,7 +175,7 @@
 {
     __weak typeof(self) weakSelf = self;
     alarmInfo.isOpen = YES;
-    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
             alarmInfo.isOpen = NO;
@@ -169,7 +190,7 @@
 {
     __weak typeof(self) weakSelf = self;
     alarmInfo.isOpen = NO;
-    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager alarmConfig:alarmInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
             alarmInfo.isOpen = YES;
@@ -205,7 +226,7 @@
 
 - (NSString *)getAlarmTimeStringWithDataModle:(SLPAlarmInfo *)dataModel {
     NSString *time = [SLPUtils timeStringFrom:dataModel.hour minute:dataModel.minute isTimeMode24:[SLPUtils isTimeMode24]];
-    NSString *alarmType = (dataModel.alarmID == 0) ? LocalizedString(@"本地闹钟") : LocalizedString(@"云闹钟");
+    NSString *alarmType = (dataModel.alarmID == 0) ? LocalizedString(@"build_alarm") : LocalizedString(@"");
     return [NSString stringWithFormat:@"%@ -- %@",time,alarmType];
 }
 

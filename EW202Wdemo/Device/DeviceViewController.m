@@ -25,6 +25,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *ipTextField;
 @property (nonatomic, weak) IBOutlet UITextField *tokenTextField;
 @property (nonatomic, weak) IBOutlet UITextField *channelTextField;
+@property (nonatomic, weak) IBOutlet UITextField *platTextField;
 
 @property (nonatomic, weak) IBOutlet UIButton *connectBtn;
 @property (nonatomic, weak) IBOutlet UIView *deviceInfoShell;
@@ -95,16 +96,16 @@
     self.channelTextField.placeholder = LocalizedString(@"ChannelID");
 
     self.deviceIDTextField.placeholder = LocalizedString(@"device_id");
-    self.firmwareVersionTextField.placeholder = LocalizedString(@"固件版本");
+    self.firmwareVersionTextField.placeholder = LocalizedString(@"target_version");
     self.ipTextField.text = @"http://172.14.0.111:8082";
-    self.deviceIDTextField.text = @"EW22W20C00044";
+    self.deviceIDTextField.text = @"EW22W20C00045";
     if (SharedDataManager.token.length > 0) {
         self.tokenTextField.text = SharedDataManager.token;
     } else {
         self.tokenTextField.text = @"kylhm2tu62sw";
-        self.tokenTextField.text = @"r8xfa7hdjcm6";
+//        self.tokenTextField.text = @"r8xfa7hdjcm6";
     }
-    self.channelTextField.text = @"1";
+    self.channelTextField.text = @"13700";
     if (SharedDataManager.channelID.length > 0) {
         self.channelTextField.text = SharedDataManager.channelID;
     }
@@ -120,7 +121,7 @@
     [Utils setButton:self.getFirmwareVersionBtn title:LocalizedString(@"obtain_firmware")];
     [Utils setButton:self.getMacBtn title:LocalizedString(@"obtain_mac_address")];
     [Utils setButton:self.upgradeBtn title:LocalizedString(@"fireware_update")];
-    [Utils setButton:self.connectBtn title:LocalizedString(@"connect_device")];
+    [Utils setButton:self.connectBtn title:LocalizedString(@"connect_server")];
 
     [self.alarmTitleLabel setText:LocalizedString(@"apnea_alert")];
     [self.alarmTimeLabel setText:LocalizedString(@"set_alert_switch")];
@@ -215,19 +216,19 @@
 
 -(IBAction)connectDevice:(id)sender {
     if (self.deviceIDTextField.text.length == 0) {
-        [Utils showMessage:LocalizedString(@"设备ID不能为空") controller:self];
+        [Utils showMessage:LocalizedString(@"id_cipher") controller:self];
         return;
     }
     if (self.ipTextField.text.length == 0) {
-        [Utils showMessage:LocalizedString(@"服务器地址不能为空") controller:self];
+        [Utils showMessage:LocalizedString(@"server_http") controller:self];
         return;
     }
     if (self.tokenTextField.text.length == 0) {
-        [Utils showMessage:LocalizedString(@"token不能为空") controller:self];
+        [Utils showMessage:LocalizedString(@"enter_token") controller:self];
         return;
     }
     if (self.channelTextField.text.length == 0) {
-        [Utils showMessage:LocalizedString(@"ChannelID不能为空") controller:self];
+        [Utils showMessage:LocalizedString(@"enter_id") controller:self];
         return;
     }
     
@@ -250,15 +251,15 @@
             [SLPSharedLTcpManager loginDeviceID:SharedDataManager.deviceID completion:^(SLPDataTransferStatus status, id data) {
                 if (status == SLPDataTransferStatus_Succeed) {
                     SharedDataManager.connected = YES;
-                    [Utils showMessage:LocalizedString(@"连接成功") controller:self];
+                    [Utils showMessage:LocalizedString(@"connection_succeeded") controller:self];
                 } else {
-                    [Utils showMessage:LocalizedString(@"连接失败") controller:self];
+                    [Utils showMessage:LocalizedString(@"Connection_failed") controller:self];
                 }
                 [weakSelf unshowLoadingView];
             }];
             
         } else {
-            [Utils showMessage:LocalizedString(@"失败") controller:weakSelf];
+            [Utils showMessage:LocalizedString(@"Connection_failed") controller:weakSelf];
         }
     }];
 }
@@ -283,12 +284,12 @@
     __weak typeof(self) weakSelf = self;
     
     if (self.firmwareVersionTextField.text.length == 0) {
-        [Utils showMessage:LocalizedString(@"请输入固件版本") controller:self];
+        [Utils showMessage:LocalizedString(@"target_version") controller:self];
         return;
     }
     
     if (self.deviceIDTextField.text.length == 0 && SharedDataManager.deviceID.length == 0) {
-        [Utils showMessage:LocalizedString(@"请输入设备ID") controller:self];
+        [Utils showMessage:LocalizedString(@"id_cipher") controller:self];
         return;
     }
     
@@ -316,19 +317,6 @@
             [Utils showMessage:LocalizedString(@"up_failed") controller:weakSelf];
         }
     }];
-//    [SLPBLESharedManager bleNox:SharedDataManager.peripheral deviceUpgrade:data timeout:0 callback:^(SLPDataTransferStatus status, id data) {
-//        if (status != SLPDataTransferStatus_Succeed){
-//            [weakSelf unshowLoadingView];
-//            [Utils showMessage:LocalizedString(@"up_failed") controller:weakSelf];
-//        }else{
-//            BleNoxUpgradeInfo *info = data;
-//            [loadingView setText:[NSString stringWithFormat:@"%2d%%", (int)(info.progress * 100)]];
-//            if (info.progress == 1) {
-//                [weakSelf unshowLoadingView];
-//                [Utils showMessage:LocalizedString(@"up_success") controller:weakSelf];
-//            }
-//        }
-//    }];
 }
 
 ////更新nox升级进度

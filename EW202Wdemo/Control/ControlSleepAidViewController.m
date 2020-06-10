@@ -159,13 +159,14 @@
 {
     [super viewWillAppear:animated];
     
-    self.colorGTextfFiled.text = @"";
-    self.brightnessTextFiled.text = @"";
-    self.volTextField.text = @"";
-    
+    self.colorGTextfFiled.text = @"0";
+    self.brightnessTextFiled.text = @"30";
+    self.volTextField.text = @"10";
     
     [self setUI];
     
+    [self getAidInfo];
+
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFiledEditChanged:)name:UITextFieldTextDidChangeNotification object:nil];
 }
 
@@ -225,8 +226,6 @@
 
 - (void)setUI
 {
-    NSLog(@"brightness %d",SharedDataManager.aidInfo.brightness);
-    
     self.line1.backgroundColor = [Theme normalLineColor];
     self.line2.backgroundColor = [Theme normalLineColor];
     self.line3.backgroundColor = [Theme normalLineColor];
@@ -350,6 +349,20 @@
     self.saveBtn.layer.cornerRadius = 5;
 }
 
+- (void)getAidInfo
+{
+    __weak typeof(self) weakSelf = self;
+
+    [SLPSharedLTcpManager getAidInfoWithDeviceInfo:SharedDataManager.deviceID  timeOut:0 callback:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            SLPAidInfo *info = data;
+            SharedDataManager.aidInfo = info;
+            
+            [weakSelf setUI];
+        }
+    }];
+}
+
 - (NSString *)getMusicNameWithMusicID:(NSInteger)musicID
 {
     NSString *musicName = @"";
@@ -380,7 +393,7 @@
     __weak typeof(self) weakSelf = self;
     SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.volume = vol;
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -433,7 +446,7 @@
 {
     SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.musicFlag = 1;
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
          if (completion) {
              completion(status);
         }
@@ -444,7 +457,7 @@
 {
     SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.musicFlag = 0;
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
          if (completion) {
              completion(status);
         }
@@ -494,7 +507,7 @@
     aidInfo.w = w;
     aidInfo.brightness = brightness;
     
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status == SLPDataTransferStatus_Succeed) {
             SharedDataManager.aidInfo = aidInfo;
         }else{
@@ -523,7 +536,7 @@
     aidInfo.lightFlag = 0;
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }
@@ -585,7 +598,7 @@
     SLPAidInfo *aidInfo = [self currentAidInfo];
     
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W ip:@"" timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configAidInfo:aidInfo deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{
@@ -599,7 +612,7 @@
 - (void)showTimeSelector
 {
     NSMutableArray *values = [NSMutableArray array];
-    for (int i = 1; i <= 45; i++) {
+    for (int i = 1; i <= 60; i++) {
         [values addObject:@(i)];
     }
     SLPMinuteSelectView *minuteSelectView = [SLPMinuteSelectView minuteSelectViewWithValues:values];

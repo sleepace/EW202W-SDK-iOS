@@ -37,15 +37,15 @@
 - (void)installSDKWithToken:(NSString *)token ip:(NSString *)ip channelID:(NSInteger)channelID timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
 //绑定
-- (void)bindDevice:(NSString *)deviceID leftRight:(NSInteger)leftRight ip:(NSString *)ip timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
+- (void)bindDevice:(NSString *)deviceID leftRight:(NSInteger)leftRight  timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
 //解绑
-- (void)unBindDevice:(NSString *)deviceID leftRight:(NSInteger)leftRight ip:(NSString *)ip timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
+- (void)unBindDevice:(NSString *)deviceID leftRight:(NSInteger)leftRight  timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
 
-- (void)getBindDevice:(NSString *)deviceID ip:(NSString *)ip timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
+- (void)getBindDevice:(NSString *)deviceID  timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
-- (void)getDeviceWithChannelId:(NSString *)channelId lan:(NSString *)lan ip:(NSString *)ip timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
+- (void)getDeviceWithChannelId:(NSString *)channelId lan:(NSString *)lan  timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
 /**
  助眠操作
@@ -55,7 +55,7 @@
  @param handle 回调
  */
 
-- (void)configAidInfo:(SLPAidInfo *)aidInfo deviceInfo:(NSString *)deviceName deviceType:(SLPDeviceTypes)deviceType ip:(NSString *)ip timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)configAidInfo:(SLPAidInfo *)aidInfo deviceInfo:(NSString *)deviceName deviceType:(SLPDeviceTypes)deviceType  timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  助眠配置获取
@@ -63,7 +63,7 @@
  @param timeout 超时（单位秒）
  @param handle 回调
 */
-- (void)getAidInfoWithDeviceInfo:(NSString *)deviceName ip:(NSString *)ip timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)getAidInfoWithDeviceInfo:(NSString *)deviceName  timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  时钟休眠设置
@@ -73,7 +73,7 @@
  @param handle 回调
  */
 
-- (void)configClockDormancy:(SLPClockDormancyBean *)clockDormancyBean deviceInfo:(NSString *)deviceName ip:(NSString *)ip timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)configClockDormancy:(SLPClockDormancyBean *)clockDormancyBean deviceInfo:(NSString *)deviceName  timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  时钟休眠获取
@@ -82,7 +82,7 @@
  @param handle 回调
  */
 
-- (void)getClockDormancyWithDeviceInfo:(NSString *)deviceName ip:(NSString *)ip timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)getClockDormancyWithDeviceInfo:(NSString *)deviceName  timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 
 /**
@@ -91,7 +91,7 @@
  @param timeout 超时（单位秒）
  @param handle 回调 返回 NSArray<SABAlarmInfo *>
  */
-- (void)getAlarmListWithDeviceInfo:(NSString *)deviceName ip:(NSString *)ip timeout:(CGFloat)timeout completion:(SLPTransforCallback)handle;
+- (void)getAlarmListWithDeviceInfo:(NSString *)deviceName  timeout:(CGFloat)timeout completion:(SLPTransforCallback)handle;
 
 /**
  添加，修改和删除闹铃
@@ -100,7 +100,7 @@
  @param timeout 超时（单位秒）
  @param handle 回调
  */
-- (void)alarmConfig:(SLPAlarmInfo *)alarmInfo deviceInfo:(NSString *)deviceName deviceType:(SLPDeviceTypes)deviceType ip:(NSString *)ip timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)alarmConfig:(SLPAlarmInfo *)alarmInfo deviceInfo:(NSString *)deviceName deviceType:(SLPDeviceTypes)deviceType  timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /*固件升级通知
 deviceID           :设备ID

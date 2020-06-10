@@ -40,11 +40,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.colorRTextField.text = @"";
-    self.colorGTextfFiled.text = @"";
-    self.colorBTextFiled.text = @"";
-    self.colorWTextFiled.text = @"";
-    self.brightnessTextFiled.text = @"";
+    self.colorRTextField.text = @"255";
+    self.colorGTextfFiled.text = @"104";
+    self.colorBTextFiled.text = @"0";
+    self.colorWTextFiled.text = @"30";
+    self.brightnessTextFiled.text = @"100";
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFiledEditChanged:)name:UITextFieldTextDidChangeNotification object:nil];
 }
