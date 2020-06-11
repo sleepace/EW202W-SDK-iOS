@@ -99,6 +99,25 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)ew202wConfigSystem:(UInt8)operation value:(UInt8)value pincode:(NSString *)pincode deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
+ 助眠操作
+ @param deviceName 设备名称
+ @param aidInfo 助眠信息
+ @param timeout 超时（单位秒）
+ @param handle 回调
+ */
+
+- (void)ew202wConfigAidInfo:(SLPAidInfo *)aidInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+/**
+ 助眠配置获取
+ @param deviceName 设备名称
+ @param timeout 超时（单位秒）
+ @param handle 回调
+*/
+- (void)ew202wGetAidInfoWithDeviceInfo:(NSString *)deviceName timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+
+/**
  工作状态查询
  @param deviceName 设备名称
  @param timeout 超时（单位秒）

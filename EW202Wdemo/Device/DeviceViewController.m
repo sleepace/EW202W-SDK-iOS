@@ -47,16 +47,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *getFirmwareVersionBtn;
 @property (nonatomic, weak) IBOutlet UILabel *firmwareVersionLabel;
 
-//setting
-@property (nonatomic, weak) IBOutlet UIView *settingShell;
-@property (nonatomic, weak) IBOutlet UILabel *settingSectionLabel;
-@property (nonatomic, weak) IBOutlet UIView *alarmUpLine;
-@property (nonatomic, weak) IBOutlet UILabel *alarmTitleLabel;
-@property (nonatomic, weak) IBOutlet UISwitch *alarmEnableSwitch;
-@property (nonatomic, weak) IBOutlet UIView *alarmDownLine;
-@property (nonatomic, weak) IBOutlet UILabel *alarmTimeLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *alarmTimeIcon;
-@property (nonatomic, weak) IBOutlet UIView *alarmTimeDownLine;
 
 @property (nonatomic, assign) BOOL connected;
 @end
@@ -89,7 +79,6 @@
     [Utils configSectionTitle:self.userIDTitleLabel];
     [Utils configSectionTitle:self.deviceInfoSectionLabel];
     [Utils configSectionTitle:self.firmwareInfoSectionLabel];
-    [Utils configSectionTitle:self.settingSectionLabel];
     
     self.ipTextField.placeholder = LocalizedString(@"server_ip");
     self.tokenTextField.placeholder = LocalizedString(@"token");
@@ -123,22 +112,11 @@
     [Utils setButton:self.upgradeBtn title:LocalizedString(@"fireware_update")];
     [Utils setButton:self.connectBtn title:LocalizedString(@"connect_server")];
 
-    [self.alarmTitleLabel setText:LocalizedString(@"apnea_alert")];
-    [self.alarmTimeLabel setText:LocalizedString(@"set_alert_switch")];
-    [self.alarmTimeIcon setImage:[UIImage imageNamed:@"common_list_icon_leftarrow.png"]];
 
     [self.userIDTitleLabel setText:LocalizedString(@"userid_sync_sleep")];
     [self.deviceInfoSectionLabel setText:LocalizedString(@"device_infos")];
     [self.firmwareInfoSectionLabel setText:LocalizedString(@"firmware_info")];
-    [self.settingSectionLabel setText:LocalizedString(@"setting")];
-    
-    [self.alarmUpLine setBackgroundColor:Theme.normalLineColor];
-    [self.alarmDownLine setBackgroundColor:Theme.normalLineColor];
-    [self.alarmTimeDownLine setBackgroundColor:Theme.normalLineColor];
-    
-    [Utils configCellTitleLabel:self.alarmTitleLabel];
-    [Utils configCellTitleLabel:self.alarmTimeLabel];
-    
+        
     self.userIDLabel.keyboardType = UIKeyboardTypeNumberPad;
     [self.userIDLabel setTextColor:Theme.C3];
     [self.userIDLabel setFont:Theme.T3];
@@ -151,59 +129,24 @@
     [self.userIDLabel setPlaceholder:LocalizedString(@"enter_userid")];
 }
 
-- (void)showConnected:(BOOL)connected {
-    CGFloat shellAlpha = connected ? 1.0 : 0.3;
-    [self.deviceInfoShell setAlpha:shellAlpha];
-    [self.firmwareInfoShell setAlpha:shellAlpha];
-    [self.settingShell setAlpha:shellAlpha];
-    
-    [self.deviceInfoShell setUserInteractionEnabled:connected];
-    [self.firmwareInfoShell setUserInteractionEnabled:connected];
-    [self.settingShell setUserInteractionEnabled:connected];
-    
-    if (!connected) {
-        [self.deviceNameLabel setText:nil];
-        [self.deviceIDLabel setText:nil];
-        [self.batteryLabel setText:nil];
-        [self.firmwareVersionLabel setText:nil];
-        [Utils setButton:self.connectBtn title:LocalizedString(@"connect_device")];
-    }else{
-        [Utils setButton:self.connectBtn title:LocalizedString(@"disconnect")];
-    }
-    [Utils setButton:self.connectBtn title:LocalizedString(@"connect_device")];
-    [self.settingShell setUserInteractionEnabled:connected];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self.deviceIDLabel setText:SharedDataManager.deviceID];
-//    [self.deviceNameLabel setText:SharedDataManager.deviceName];
-//    [self showConnected:SharedDataManager.connected];
 }
 
 - (void)addNotificationObservre {
     NSNotificationCenter *notificationCeter = [NSNotificationCenter defaultCenter];
-    [notificationCeter addObserver:self selector:@selector(blueToothIsOpen:) name:kNotificationNameBLEEnable object:nil];
     [notificationCeter addObserver:self selector:@selector(tcpDeviceConnected:) name:kNotificationNameLTCPConnected object:nil];
     [notificationCeter addObserver:self selector:@selector(tcpDeviceDisconnected:) name:kNotificationNameLTCPDisconnected object:nil];
-}
-
-- (void)blueToothIsOpen:(NSNotification *)notification
-{
-
-    
 }
 
 - (void)tcpDeviceConnected:(NSNotification *)notification {
     self.connected = YES;
     SharedDataManager.connected = YES;
-//    [self showConnected:YES];
 }
 
 - (void)tcpDeviceDisconnected:(NSNotification *)notification {
     self.connected = NO;
     SharedDataManager.connected = NO;
-//    [self showConnected:NO];
 }
 
 - (IBAction)getDeviceNameClicked:(id)sender {

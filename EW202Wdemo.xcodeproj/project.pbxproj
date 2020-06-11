@@ -108,13 +108,12 @@
 		4C6C94042486342F009D6B8E /* SLPClockFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C94032486342F009D6B8E /* SLPClockFooter.m */; };
 		4C6C94062486344B009D6B8E /* SLPClockFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C94052486344B009D6B8E /* SLPClockFooter.xib */; };
 		4C83627E2471853500BA8553 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C83627D2471853500BA8553 /* AppDelegate.m */; };
-		4C8362812471853500BA8553 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8362802471853500BA8553 /* SceneDelegate.m */; };
-		4C8362842471853500BA8553 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8362832471853500BA8553 /* ViewController.m */; };
 		4C8362872471853500BA8553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C8362852471853500BA8553 /* Main.storyboard */; };
 		4C8362892471853B00BA8553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8362882471853B00BA8553 /* Assets.xcassets */; };
 		4C83628C2471853B00BA8553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C83628A2471853B00BA8553 /* LaunchScreen.storyboard */; };
 		4C83628F2471853B00BA8553 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C83628E2471853B00BA8553 /* main.m */; };
 		4C8362972471859B00BA8553 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8362962471858900BA8553 /* libc++.tbd */; };
+		4C90B7F02490BBC8009C2DF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C90B7EE2490BBC7009C2DF1 /* ViewController.m */; };
 		4C974CC02488C00B0019A6BB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C974CBF2488C00B0019A6BB /* NetworkExtension.framework */; };
 		4C974CC22488C24F0019A6BB /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C974CC12488C24F0019A6BB /* ExternalAccessory.framework */; };
 		4CAF29A224750F0A00FC09BD /* ClockDormancyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF29A024750F0A00FC09BD /* ClockDormancyViewController.m */; };
@@ -287,16 +286,14 @@
 		4C8362792471853500BA8553 /* EW202WDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EW202WDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C83627C2471853500BA8553 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C83627D2471853500BA8553 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4C83627F2471853500BA8553 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		4C8362802471853500BA8553 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		4C8362822471853500BA8553 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4C8362832471853500BA8553 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4C8362862471853500BA8553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C8362882471853B00BA8553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C83628B2471853B00BA8553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C83628D2471853B00BA8553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C83628E2471853B00BA8553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C8362962471858900BA8553 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4C90B7EE2490BBC7009C2DF1 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4C90B7EF2490BBC7009C2DF1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4C974CBE2488C00B0019A6BB /* EW202WDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EW202WDemo.entitlements; sourceTree = "<group>"; };
 		4C974CBF2488C00B0019A6BB /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		4C974CC12488C24F0019A6BB /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
@@ -362,17 +359,17 @@
 		4C524B70247371450008AFAE /* pop up */ = {
 			isa = PBXGroup;
 			children = (
+				4C524B79247371450008AFAE /* SLPLoadingBlockView.h */,
+				4C524B77247371450008AFAE /* SLPLoadingBlockView.m */,
 				4C524B71247371450008AFAE /* SLPLoadingBlockView.xib */,
 				4C524B72247371450008AFAE /* SLPPopBaseView.h */,
-				4C524B73247371450008AFAE /* DatePickerPopUpView.xib */,
-				4C524B74247371450008AFAE /* PopUpView.xib */,
-				4C524B75247371450008AFAE /* PopUpView.m */,
-				4C524B76247371450008AFAE /* DatePickerPopUpView.m */,
-				4C524B77247371450008AFAE /* SLPLoadingBlockView.m */,
 				4C524B78247371450008AFAE /* SLPPopBaseView.m */,
-				4C524B79247371450008AFAE /* SLPLoadingBlockView.h */,
-				4C524B7A247371450008AFAE /* DatePickerPopUpView.h */,
 				4C524B7B247371450008AFAE /* PopUpView.h */,
+				4C524B75247371450008AFAE /* PopUpView.m */,
+				4C524B74247371450008AFAE /* PopUpView.xib */,
+				4C524B7A247371450008AFAE /* DatePickerPopUpView.h */,
+				4C524B76247371450008AFAE /* DatePickerPopUpView.m */,
+				4C524B73247371450008AFAE /* DatePickerPopUpView.xib */,
 			);
 			path = "pop up";
 			sourceTree = "<group>";
@@ -380,13 +377,13 @@
 		4C524B7D247371450008AFAE /* SLPUtils */ = {
 			isa = PBXGroup;
 			children = (
-				4C524B7E247371450008AFAE /* SLPUtils+Data.h */,
 				4C524B7F247371450008AFAE /* SLPUtilHeads.h */,
-				4C524B80247371450008AFAE /* SLPUtils+Date.h */,
-				4C524B81247371450008AFAE /* SLPUtils.m */,
-				4C524B82247371450008AFAE /* SLPUtils+Date.m */,
+				4C524B7E247371450008AFAE /* SLPUtils+Data.h */,
 				4C524B83247371450008AFAE /* SLPUtils+Data.m */,
+				4C524B80247371450008AFAE /* SLPUtils+Date.h */,
+				4C524B82247371450008AFAE /* SLPUtils+Date.m */,
 				4C524B84247371450008AFAE /* SLPUtils.h */,
+				4C524B81247371450008AFAE /* SLPUtils.m */,
 			);
 			path = SLPUtils;
 			sourceTree = "<group>";
@@ -394,11 +391,11 @@
 		4C524B89247371450008AFAE /* SLPTime */ = {
 			isa = PBXGroup;
 			children = (
-				4C524B8A247371450008AFAE /* SLPTime12.m */,
 				4C524B8B247371450008AFAE /* SLPTime.h */,
-				4C524B8C247371450008AFAE /* SLPTime24.m */,
 				4C524B8D247371450008AFAE /* SLPTime12.h */,
+				4C524B8A247371450008AFAE /* SLPTime12.m */,
 				4C524B8E247371450008AFAE /* SLPTime24.h */,
+				4C524B8C247371450008AFAE /* SLPTime24.m */,
 			);
 			path = SLPTime;
 			sourceTree = "<group>";
@@ -407,18 +404,18 @@
 			isa = PBXGroup;
 			children = (
 				4C524B92247371450008AFAE /* TimePickerSelectView.m */,
+				4C524B98247371450008AFAE /* TimePickerSelectView.h */,
+				4C524B9C247371450008AFAE /* TimePickerSelectView.xib */,
+				4C524B99247371450008AFAE /* SLPMinuteSelectView.h */,
 				4C524B93247371450008AFAE /* SLPMinuteSelectView.m */,
+				4C524B9B247371450008AFAE /* SLPMinuteSelectView.xib */,
+				4C524B9A247371450008AFAE /* HourMinutePicker.h */,
 				4C524B94247371450008AFAE /* HourMinutePicker.m */,
 				4C524B95247371450008AFAE /* HourMinutePicker.xib */,
-				4C524B96247371450008AFAE /* SLPMinutePicker.m */,
-				4C524B97247371450008AFAE /* SLPTimePicker.m */,
-				4C524B98247371450008AFAE /* TimePickerSelectView.h */,
-				4C524B99247371450008AFAE /* SLPMinuteSelectView.h */,
-				4C524B9A247371450008AFAE /* HourMinutePicker.h */,
-				4C524B9B247371450008AFAE /* SLPMinuteSelectView.xib */,
-				4C524B9C247371450008AFAE /* TimePickerSelectView.xib */,
-				4C524B9D247371450008AFAE /* SLPTimePicker.h */,
 				4C524B9E247371450008AFAE /* SLPMinutePicker.h */,
+				4C524B96247371450008AFAE /* SLPMinutePicker.m */,
+				4C524B9D247371450008AFAE /* SLPTimePicker.h */,
+				4C524B97247371450008AFAE /* SLPTimePicker.m */,
 			);
 			path = SLPTimePicker;
 			sourceTree = "<group>";
@@ -640,9 +637,9 @@
 			isa = PBXGroup;
 			children = (
 				4C524C592473718D0008AFAE /* Utils.h */,
+				4C524C5C2473718D0008AFAE /* Utils.m */,
 				4C524C5A2473718D0008AFAE /* Utils+UI.h */,
 				4C524C5B2473718D0008AFAE /* Utils+UI.m */,
-				4C524C5C2473718D0008AFAE /* Utils.m */,
 				4C524C5D2473718D0008AFAE /* UtilsHeads.h */,
 			);
 			path = utils;
@@ -707,20 +704,18 @@
 				4C524BE72473718C0008AFAE /* libs */,
 				4C524C5E2473718D0008AFAE /* Main */,
 				4C524C3B2473718C0008AFAE /* Resource */,
+				4C524B9F247371450008AFAE /* Device */,
+				4C524BA6247371450008AFAE /* Control */,
 				4C524BEB2473718C0008AFAE /* Settings */,
 				4C524C382473718C0008AFAE /* Theme */,
 				4C524C582473718D0008AFAE /* utils */,
 				4C524B6B247371450008AFAE /* common */,
-				4C524BA6247371450008AFAE /* Control */,
 				4C524BB8247371450008AFAE /* Coordinate */,
 				4C524BBB247371460008AFAE /* DataManager */,
-				4C524B9F247371450008AFAE /* Device */,
 				4C83627C2471853500BA8553 /* AppDelegate.h */,
 				4C83627D2471853500BA8553 /* AppDelegate.m */,
-				4C83627F2471853500BA8553 /* SceneDelegate.h */,
-				4C8362802471853500BA8553 /* SceneDelegate.m */,
-				4C8362822471853500BA8553 /* ViewController.h */,
-				4C8362832471853500BA8553 /* ViewController.m */,
+				4C90B7EF2490BBC7009C2DF1 /* ViewController.h */,
+				4C90B7EE2490BBC7009C2DF1 /* ViewController.m */,
 				4C8362852471853500BA8553 /* Main.storyboard */,
 				4C8362882471853B00BA8553 /* Assets.xcassets */,
 				4C83628A2471853B00BA8553 /* LaunchScreen.storyboard */,
@@ -780,7 +775,7 @@
 		4C8362712471853400BA8553 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = medica;
 				TargetAttributes = {
 					4C8362782471853500BA8553 = {
@@ -901,7 +896,6 @@
 				4C524C922473718D0008AFAE /* AlarmViewController.m in Sources */,
 				4C524BBE247371460008AFAE /* BaseTableViewCell.m in Sources */,
 				4C524C832473718D0008AFAE /* AlarmDataModel.m in Sources */,
-				4C8362842471853500BA8553 /* ViewController.m in Sources */,
 				4C524CA82473718D0008AFAE /* Utils+UI.m in Sources */,
 				4C524C6E2473718D0008AFAE /* SettingsViewController.m in Sources */,
 				4C524BCB247371460008AFAE /* VerticalDashView.m in Sources */,
@@ -938,6 +932,7 @@
 				4C524C8C2473718D0008AFAE /* TitleSwitchCell.m in Sources */,
 				4C524BC6247371460008AFAE /* SLPLoadingBlockView.m in Sources */,
 				4C524BD9247371460008AFAE /* DeviceViewController.m in Sources */,
+				4C90B7F02490BBC8009C2DF1 /* ViewController.m in Sources */,
 				4C524BC4247371460008AFAE /* PopUpView.m in Sources */,
 				4C524C892473718D0008AFAE /* TitleValueSwitchCellTableViewCell.m in Sources */,
 				4C524BCD247371460008AFAE /* SLPTime24.m in Sources */,
@@ -947,7 +942,6 @@
 				4C524CB224737BA40008AFAE /* ConfigWIFIViewController.m in Sources */,
 				4C524BD0247371460008AFAE /* SLPMinuteSelectView.m in Sources */,
 				4C524BC0247371460008AFAE /* BaseViewController.m in Sources */,
-				4C8362812471853500BA8553 /* SceneDelegate.m in Sources */,
 				4C524BD8247371460008AFAE /* SearchViewController.m in Sources */,
 				4C6C94042486342F009D6B8E /* SLPClockFooter.m in Sources */,
 				4C524BE6247371460008AFAE /* DataManager.m in Sources */,
@@ -1001,6 +995,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1064,6 +1059,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

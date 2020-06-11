@@ -47,23 +47,6 @@
 
 - (void)getDeviceWithChannelId:(NSString *)channelId lan:(NSString *)lan  timeout:(CGFloat)timeoutInterval completion:(SLPTransforCallback)handle;
 
-/**
- 助眠操作
- @param deviceName 设备名称
- @param aidInfo 助眠信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)configAidInfo:(SLPAidInfo *)aidInfo deviceInfo:(NSString *)deviceName deviceType:(SLPDeviceTypes)deviceType  timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 助眠配置获取
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调
-*/
-- (void)getAidInfoWithDeviceInfo:(NSString *)deviceName  timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  时钟休眠设置
