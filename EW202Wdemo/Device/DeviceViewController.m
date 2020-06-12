@@ -247,7 +247,7 @@
         if (status == SLPDataTransferReturnStatus_Succeed)///通知升级成功（获取进度)
         {
             ///接收nox升级进度
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateTCPUpgradeProgress:) name:kNotificationNameNoxUpdateRateChanged object:nil];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateTCPUpgradeProgress:) name:kNotificationNameUpdateRateChanged object:nil];
             //是否接受nox升级进度超时定时器
             progressTimer=[SLPTimer scheduledTimerWithTimeInterval:20.0 target:self  userInfo:nil repeats:NO handle:^(SLPTimer * _Nonnull timer) {
                 [weakSelf unshowLoadingView];
@@ -289,7 +289,7 @@
             [weakSelf unshowLoadingView];
             [Utils showMessage:LocalizedString(@"up_success") controller:weakSelf];
             [progressTimer invalidate];//销毁进度条定时器
-            [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationNameNoxUpdateRateChanged object:nil];///移除进度通知
+            [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationNameUpdateRateChanged object:nil];///移除进度通知
         }
             break;
         case 2://升级失败
@@ -297,7 +297,7 @@
             [weakSelf unshowLoadingView];
             [Utils showMessage:LocalizedString(@"up_failed") controller:weakSelf];
             [progressTimer invalidate];//销毁进度条定时器
-            [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationNameNoxUpdateRateChanged object:nil];///移除进度通知
+            [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationNameUpdateRateChanged object:nil];///移除进度通知
         }
             break;
         default:

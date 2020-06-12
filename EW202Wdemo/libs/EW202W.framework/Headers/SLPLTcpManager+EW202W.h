@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
  工作状态查询
  @param deviceName 设备名称
  @param timeout 超时（单位秒）
- @param handle 回调 data类型为SABWorkStatus
+ @param handle 回调 data类型为EW202WWorkState
  */
 - (void)ew202wGetWorkStatusWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
@@ -99,6 +99,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)ew202wConfigSystem:(UInt8)operation value:(UInt8)value pincode:(NSString *)pincode deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
+ 系统信息查询
+ @param deviceName 设备名称
+ @param timeout 超时（单位秒）
+ @param handle 回调 data类型为EW202WSystemInfo
+*/
+- (void)ew202wGetSystemWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+/**
  助眠操作
  @param deviceName 设备名称
  @param aidInfo 助眠信息
@@ -116,24 +124,6 @@ NS_ASSUME_NONNULL_BEGIN
 */
 - (void)ew202wGetAidInfoWithDeviceInfo:(NSString *)deviceName timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
-
-/**
- 工作状态查询
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调 data类型为SABWorkStatus
-*/
-- (void)ew202wGetSystemWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/*固件升级通知
-deviceID           :设备ID
-deviceType         :设备类型
-firmwareType       :固件类型
-0:无效    1:开发
-2:测试    3:发布
-firmwareVersion    :最新固件版本号
-*/
-- (void)ew202wPublicUpdateOperationWithDeviceID:(NSString *)deviceID deviceType:(SLPDeviceTypes)deviceType firmwareType:(UInt8)firmwareType firmwareVersion:(UInt16)version timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 @end
 
 
