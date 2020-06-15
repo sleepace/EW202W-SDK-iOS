@@ -149,7 +149,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     self.alarmDataNew.minute = 0;
     self.alarmDataNew.flag = 0;
     self.alarmDataNew.snoozeTime = 6;
-    self.alarmDataNew.snoozeLength = 9;
+    self.alarmDataNew.snoozeLength = 5;
     self.alarmDataNew.volume = 16;
     self.alarmDataNew.brightness = 100;
     self.alarmDataNew.musicID = 31098;
@@ -449,6 +449,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
 
 - (IBAction)saveAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
+    self.alarmDataNew.isOpen = YES;
     [SLPSharedLTcpManager alarmConfig:self.alarmDataNew deviceInfo:SharedDataManager.deviceID deviceType:SLPDeviceType_EW202W  timeout:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];

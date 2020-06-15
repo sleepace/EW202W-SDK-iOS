@@ -8,7 +8,7 @@
 
 #import "BaseTableViewCell.h"
 
-typedef void (^SwitcherBlock)(UISwitch *);
+typedef void (^SwitcherBlock)(UISwitch *_Nullable);
 
 NS_ASSUME_NONNULL_BEGIN
 

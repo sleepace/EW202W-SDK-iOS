@@ -140,7 +140,7 @@
         if (self.bean.flag) {
             value = [self getTimeStringWithDataModle:self.bean];
         } else {
-            value = LocalizedString(@"关闭");
+            value = LocalizedString(@"close1");
         }
         
         cell.subTitleLabel.text = value;

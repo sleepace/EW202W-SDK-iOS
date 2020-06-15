@@ -80,7 +80,7 @@ static NSString *const kRowEnd = @"kRowEnd";
 - (IBAction)saveClock:(id)sender
 {
     __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager configClockDormancy:self.bean deviceInfo:SharedDataManager.deviceID  timeOut:0 callback:^(SLPDataTransferStatus status, id data) {
+    [SLPSharedLTcpManager configClockDormancy:self.bean deviceInfo:SharedDataManager.deviceID timeOut:0 callback:^(SLPDataTransferStatus status, id data) {
         if (status != SLPDataTransferStatus_Succeed) {
             [Utils showDeviceOperationFailed:status atViewController:weakSelf];
         }else{

@@ -258,3 +258,4 @@
 "network_timeout"="No Network Connection";
 "nox_connection_fail_tips"="%@ connection failed, please make sure network has strong connection";
 "build_alarm"="Built-in alarm";
+"close1"="Close";

@@ -258,3 +258,4 @@
 "network_timeout"="网络不畅通，检查后再试试吧";
 "nox_connection_fail_tips"="%@连接失败，确保网络连接畅通";
 "build_alarm"="内置闹钟";
+"close1"="关闭";
