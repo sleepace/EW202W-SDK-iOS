@@ -69,7 +69,7 @@
     info.hour = 8;
     info.minute = 0;
     info.flag = 0;
-    info.snoozeTime = 6;
+    info.snoozeTime = 3;
     info.snoozeLength = 9;
     info.volume = 16;
     info.brightness = 100;

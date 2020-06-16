@@ -148,7 +148,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     self.alarmDataNew.hour = 8;
     self.alarmDataNew.minute = 0;
     self.alarmDataNew.flag = 0;
-    self.alarmDataNew.snoozeTime = 6;
+    self.alarmDataNew.snoozeTime = 3;
     self.alarmDataNew.snoozeLength = 5;
     self.alarmDataNew.volume = 16;
     self.alarmDataNew.brightness = 100;
@@ -408,12 +408,12 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     else if ([rowName isEqualToString:kRowSnooze]){
         TitleSwitchCell *sCell = (TitleSwitchCell *)[SLPUtils tableView:self.tableView cellNibName:@"TitleSwitchCell"];
         sCell.titleLabel.text = LocalizedString(@"snooze_");
-        sCell.switcher.on = self.alarmDataNew.snoozeTime;
+        sCell.switcher.on = (self.alarmDataNew.snoozeTime != 0);
         [Utils configCellTitleLabel:sCell.titleLabel];
         
         
         sCell.switchBlock = ^(UISwitch *sender) {
-            weakSelf.alarmDataNew.snoozeTime = sender.on;
+            weakSelf.alarmDataNew.snoozeTime = sender.on ? 3 : 0;
             [weakSelf loadSectionData];
             [weakSelf.tableView reloadData];
         };

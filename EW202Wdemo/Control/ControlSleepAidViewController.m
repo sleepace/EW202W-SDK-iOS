@@ -532,7 +532,7 @@
 }
 
 - (IBAction)openLightAction:(UIButton *)sender {
-    SLPAidInfo *aidInfo = [[SLPAidInfo alloc] init];
+    SLPAidInfo *aidInfo = [self localAidInfo];
     aidInfo.lightFlag = 0;
     
     __weak typeof(self) weakSelf = self;
@@ -570,10 +570,7 @@
 
 - (void)saveAssistInfo
 {
-    int r = [self.colorRTextField.text intValue];
     int g = [self.colorGTextfFiled.text intValue];
-    int b = [self.colorRTextField.text intValue];
-    int w = [self.colorWTextFiled.text intValue];
     
     BOOL gValid = (g >= 0) && (g <= 120);
     

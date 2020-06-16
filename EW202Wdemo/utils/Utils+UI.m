@@ -108,7 +108,10 @@
     if (status == -4) {
         [self showAlertTitle:nil message:LocalizedString(@"phone_bluetooth_not_open")
                 confirmTitle:LocalizedString(@"confirm") atViewController:viewController];
-    }else {
+    } if (status == -6) {
+        [self showAlertTitle:LocalizedString(@"") message:LocalizedString(@"entered_light")
+        confirmTitle:LocalizedString(@"confirm") atViewController:viewController];
+    } else {
         [self showAlertTitle:LocalizedString(@"device_connect_fail") message:LocalizedString(@"network_timeout")
                 confirmTitle:LocalizedString(@"confirm") atViewController:viewController];
     }

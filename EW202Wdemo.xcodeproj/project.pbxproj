@@ -485,11 +485,11 @@
 		4C524BE72473718C0008AFAE /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				4C3E0141247CB78B0038D7EF /* SLPTCP.framework */,
 				4C1219BD24751CA00008C3CC /* BLEWifiConfig.framework */,
-				4C1219BB24751C870008C3CC /* EW202W.framework */,
 				4C524BE82473718C0008AFAE /* BluetoothManager.framework */,
+				4C1219BB24751C870008C3CC /* EW202W.framework */,
 				4C524BEA2473718C0008AFAE /* SLPCommon.framework */,
+				4C3E0141247CB78B0038D7EF /* SLPTCP.framework */,
 			);
 			path = libs;
 			sourceTree = "<group>";

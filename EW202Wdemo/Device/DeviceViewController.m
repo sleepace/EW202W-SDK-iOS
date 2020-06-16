@@ -87,13 +87,19 @@
     self.deviceIDTextField.placeholder = LocalizedString(@"device_id");
     self.firmwareVersionTextField.placeholder = LocalizedString(@"target_version");
     self.ipTextField.text = @"http://172.14.0.111:8082";
+    
     self.deviceIDTextField.text = @"EW22W20C00045";
+    if (SharedDataManager.deviceID.length > 0) {
+        self.deviceIDTextField.text = SharedDataManager.deviceID;
+    }
+    
     if (SharedDataManager.token.length > 0) {
         self.tokenTextField.text = SharedDataManager.token;
     } else {
         self.tokenTextField.text = @"kylhm2tu62sw";
 //        self.tokenTextField.text = @"r8xfa7hdjcm6";
     }
+    
     self.channelTextField.text = @"13700";
     if (SharedDataManager.channelID.length > 0) {
         self.channelTextField.text = SharedDataManager.channelID;
@@ -178,6 +184,7 @@
     [SLPSharedLTcpManager.lTcp disconnectCompletion:nil];
     
     SharedDataManager.deviceID = self.deviceIDTextField.text;
+    [[NSUserDefaults standardUserDefaults] setValue:self.deviceIDTextField.text forKey:@"deviceID"];
 
     __weak typeof(self) weakSelf = self;
     [SLPSharedLTcpManager installSDKWithToken:self.tokenTextField.text ip:self.ipTextField.text channelID:self.channelTextField.text.intValue timeout:0 completion:^(SLPDataTransferStatus status, id data) {
