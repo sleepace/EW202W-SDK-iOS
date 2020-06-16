@@ -9,7 +9,7 @@
 "done"="Carry out";
 "timer_no_0"="Duration cannot be 0";
 "music_aroma_light_close"="Sleeping lights, music, and aroma will automatically turn off after %@ minutes of sleep.";
-"tue"="Tuesday";
+"tue"="TUE";
 "music_list_dance"="Little Music Box";
 "music_list_sun"="Cozy Fire";
 "music_list_sea"="Waves Of The Ocean";
@@ -17,7 +17,7 @@
 "alarm_list_8"="Morning Glory";
 "alarm_list_7"="Morning By The Lake";
 "alarm_list_6"="Wake Up, Sweetie";
-"mon"="Monday";
+"mon"="MON";
 "alarm"="Alarm";
 "music"="Music";
 "min_min"="M";
@@ -49,8 +49,8 @@
 "disconnect"="Disconnect";
 "click_refresh"="Cannot find device? Click to refresh";
 "select_id"="Select Device ID (keep phone close to device";
-"thur"="Thursday";
-"fri"="Friday";
+"thur"="THU";
+"fri"="FRI";
 "fireware_update"="Firmware Update";
 "obtain_firmware"="Obtain Firmware Version";
 "device_id_cipher"="Device ID (cipher)";
@@ -60,8 +60,8 @@
 "device_infos"="Device Info";
 "connect_device"="Connected Devices";
 "device"="Device";
-"sat"="Saturday";
-"sun"="Sunday";
+"sat"="SAT";
+"sun"="SUN";
 "factory_reset"="Reset";
 "factory_reset_send"="A factory reset command has been sent";
 "sa_timer_on"="Timed aromatherapy";
@@ -122,7 +122,7 @@
 "alarm_list_3"="Romantic Morning";
 "alarm_list_2"="Waking Up Happy";
 "alarm_list_1"="Birds";
-"wed"="Wednesday";
+"wed"="WEN";
 "setnightLight"="When turned on, the color and brightness of the night light will be enabled within the set time range.";
 "nightLight"="Night light";
 "Wave"="Waving hand";
