@@ -29,6 +29,7 @@
         _aidInfo.aidStopDuration = 1;
         _aidInfo.r = 255;
         _aidInfo.b = 0;
+        _aidInfo.g = 0;
         _aidInfo.w = 0;
         _aidInfo.brightness = 0;
         _aidInfo.aidStopDuration = 45;

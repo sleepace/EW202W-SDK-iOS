@@ -115,13 +115,13 @@ enum{
     SLP_LTcp_Error_AppNotOnline = 0x07,//app不在线
     SLP_LTcp_Error_RestonNotOnline = 0x08,//reston不在线
     SLP_LTcp_Error_DataNotFound = 0x09,//请求数据不存在
-    SLP_LTcp_Error_ConfigMode = 0x10,//配置模式
     SLP_LTcp_Error_PermissionDenied = 0x0a,//权限不足
     SLP_LTcp_Error_OperationFailed = 0x0b,//操作失败
     SLP_LTcp_Error_RestonNotFound = 0x0c,//找不到RestOn
     SLP_LTcp_Error_RestonConnectFailed = 0x0d,//RestOn连接失败
     SLP_LTcp_Error_BluetoothBusy = 0x0e,//蓝牙主模块忙
     SLP_LTcp_Error_IsUpgrade = 0x0f,//正在升级
+    SLP_LTcp_Error_ConfigMode = 0x10,//配置模式
     
     SLP_LTcp_Error_UnKnown = 0xff,//未知错误
 };
