@@ -44,6 +44,12 @@
     NSString *repeatDayStr = @"";
     UInt8 weekDayNumber = weekDay;
     
+    if (weekDay == 127) {
+        repeatDayStr = LocalizedString(@"EveryDay");
+        
+        return repeatDayStr;
+    }
+    
     for (int i = 0; i < 7; i++) {
         UInt8 repeatDay = 1 << i;
         BOOL isRepeat = repeatDay & weekDayNumber;

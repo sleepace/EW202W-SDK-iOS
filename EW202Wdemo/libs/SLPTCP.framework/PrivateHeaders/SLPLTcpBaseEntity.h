@@ -15,6 +15,7 @@
 @property (nonatomic,assign) UInt16 status;
 @property (nonatomic,assign) SLPLTCPMessagetUniqTypes uniqType;
 @property (nonatomic,readonly) BOOL isSucceed;
+@property (nonatomic,readonly) BOOL isInConfig;
 
 + (SLPLTcpBaseEntity *)entityWithTCPData:(NSData *)data;
 - (id)initWithTCPData:(NSData *)data;

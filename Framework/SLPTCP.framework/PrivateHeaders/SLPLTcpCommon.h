@@ -99,6 +99,7 @@ typedef NS_ENUM(NSInteger,SLPLTCPMessagetUniqTypes) {
     SLPLTCPMessagetUniqType_EW202W_GetClockDormancyBean,
     SLPLTCPMessagetUniqType_EW202W_SetAidInfo,
     SLPLTCPMessagetUniqType_EW202W_ConfigSystem,
+    SLPLTCPMessagetUniqType_EW202W_GetSystem,
     SLPLTCPMessagetUniqType_EW202W_PostWorkMode,//EW202W主动发送的工作信息发生改变
     SLPlTCPMessagetUniqType_None,
 };
@@ -114,6 +115,7 @@ enum{
     SLP_LTcp_Error_AppNotOnline = 0x07,//app不在线
     SLP_LTcp_Error_RestonNotOnline = 0x08,//reston不在线
     SLP_LTcp_Error_DataNotFound = 0x09,//请求数据不存在
+    SLP_LTcp_Error_ConfigMode = 0x10,//配置模式
     SLP_LTcp_Error_PermissionDenied = 0x0a,//权限不足
     SLP_LTcp_Error_OperationFailed = 0x0b,//操作失败
     SLP_LTcp_Error_RestonNotFound = 0x0c,//找不到RestOn

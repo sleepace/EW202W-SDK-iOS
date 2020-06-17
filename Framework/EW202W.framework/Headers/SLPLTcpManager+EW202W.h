@@ -12,6 +12,7 @@
 #import "EW202WAlarmInfo.h"
 #import "EW202WClockDormancyBean.h"
 #import "EW202WAidInfo.h"
+#import "EW202WSystemInfo.h"
 #import <SLPCommon/SLPCommon.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -41,28 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
  工作状态查询
  @param deviceName 设备名称
  @param timeout 超时（单位秒）
- @param handle 回调 data类型为SABWorkStatus
+ @param handle 回调 data类型为EW202WWorkState
  */
 - (void)ew202wGetWorkStatusWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-
-/**
- 获取闹钟列表
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调 返回 NSArray<SABAlarmInfo *>
- */
-- (void)ew202wGetAlarmListWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout completion:(SLPTransforCallback)handle;
-
-
-/**
- 添加，修改和删除闹铃
- @param deviceName 设备名称
- @param alarmInfo 闹钟信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-- (void)ew202wAlarmConfig:(EW202WAlarmInfo *)alarmInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
  闹铃预览，退出预览
@@ -102,43 +84,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)ew202wAlarmMusicOperation:(UInt8)operation musicID:(UInt16)musicID volume:(UInt8)volume deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
 /**
- 时钟休眠设置
- @param deviceName 设备名称
- @param clockDormancyBean 时钟休眠信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wConfigClockDormancy:(EW202WClockDormancyBean *)clockDormancyBean deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 时钟休眠获取
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wGetClockDormancyWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 助眠操作
- @param deviceName 设备名称
- @param aidInfo 助眠信息
- @param timeout 超时（单位秒）
- @param handle 回调
- */
-
-- (void)ew202wConfigAidInfo:(EW202WAidInfo *)aidInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
- 助眠配置获取
- @param deviceName 设备名称
- @param timeout 超时（单位秒）
- @param handle 回调
-*/
-- (void)ew202wGetAidInfoWithDeviceInfo:(NSString *)deviceName timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
-
-/**
  系统设置
  @param deviceName 设备名称
  @param operation 操作 0：时间制式 1：网络同步时间开关 2：蓝牙开关 4: 蓝牙PIN码开关
@@ -153,15 +98,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)ew202wConfigSystem:(UInt8)operation value:(UInt8)value pincode:(NSString *)pincode deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
 
-/*固件升级通知
-deviceID           :设备ID
-deviceType         :设备类型
-firmwareType       :固件类型
-0:无效    1:开发
-2:测试    3:发布
-firmwareVersion    :最新固件版本号
+/**
+ 系统信息查询
+ @param deviceName 设备名称
+ @param timeout 超时（单位秒）
+ @param handle 回调 data类型为EW202WSystemInfo
 */
-- (void)ew202wPublicUpdateOperationWithDeviceID:(NSString *)deviceID deviceType:(SLPDeviceTypes)deviceType firmwareType:(UInt8)firmwareType firmwareVersion:(UInt16)version timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+- (void)ew202wGetSystemWithDeviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+/**
+ 助眠操作
+ @param deviceName 设备名称
+ @param aidInfo 助眠信息
+ @param timeout 超时（单位秒）
+ @param handle 回调
+ */
+
+- (void)ew202wConfigAidInfo:(SLPAidInfo *)aidInfo deviceInfo:(NSString *)deviceName timeout:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
+/**
+ 助眠配置获取
+ @param deviceName 设备名称
+ @param timeout 超时（单位秒）
+ @param handle 回调
+*/
+- (void)ew202wGetAidInfoWithDeviceInfo:(NSString *)deviceName timeOut:(CGFloat)timeout callback:(SLPTransforCallback)handle;
+
 @end
 
 

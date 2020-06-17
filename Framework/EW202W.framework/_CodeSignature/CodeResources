@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/EW202W.h</key>
 		<data>
-		fwzrbixMF7k/XHKlqm+7EGS0SXs=
+		HycyUWargkj8vaD1XOss0uedIow=
 		</data>
 		<key>Headers/EW202WAidInfo.h</key>
 		<data>
@@ -24,21 +24,25 @@
 		<data>
 		qag6mnjHOn53ux1+ruGbq+LGFcI=
 		</data>
+		<key>Headers/EW202WSystemInfo.h</key>
+		<data>
+		/7gcHofdIDUco3RhCnl1J1HUeUc=
+		</data>
 		<key>Headers/EW202WWorkState.h</key>
 		<data>
 		6mYF0MLf/mBgpB8FIN59pQTnQ+A=
 		</data>
 		<key>Headers/SLPEW202WDef.h</key>
 		<data>
-		womvUGhfbriEeTsz/YdphyLS2xE=
+		vJH2Yxl6ZtoVU/7svJd9jX9a+5c=
 		</data>
 		<key>Headers/SLPLTcpManager+EW202W.h</key>
 		<data>
-		ZTZXITuaoH3WEHs9TmHL67V/IAM=
+		szayuowRKEue96GWpGSFcpCo9NI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FBaQqvFICQ7DgAf4JvJZTMKBKsE=
+		V4i0pJo8Gq0vjfB+KkfWipm2wrQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,11 +55,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fwzrbixMF7k/XHKlqm+7EGS0SXs=
+			HycyUWargkj8vaD1XOss0uedIow=
 			</data>
 			<key>hash2</key>
 			<data>
-			xbohIvbWcUXB7Wz5XEbRG2IiVRKRW8Nwy9NwQsWZkkU=
+			UDhmOC4F7/i2oeR54Ut1Sn65g/mSg5eVLbaiRvUuYTI=
 			</data>
 		</dict>
 		<key>Headers/EW202WAidInfo.h</key>
@@ -102,6 +106,17 @@
 			ewdhOss1DkosxrX64MretoRuWfHLx89D/2TK2c7bN2Y=
 			</data>
 		</dict>
+		<key>Headers/EW202WSystemInfo.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/7gcHofdIDUco3RhCnl1J1HUeUc=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ad6YuHWaWo/qAcRs8I03JAkVGTXNf7CDxWSw656nNJA=
+			</data>
+		</dict>
 		<key>Headers/EW202WWorkState.h</key>
 		<dict>
 			<key>hash</key>
@@ -117,22 +132,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			womvUGhfbriEeTsz/YdphyLS2xE=
+			vJH2Yxl6ZtoVU/7svJd9jX9a+5c=
 			</data>
 			<key>hash2</key>
 			<data>
-			E59uW8FK1R3sN73MOfk7eQ0mRwWA4FNMGfLQOYWdd6Y=
+			EqeFNos4HxCr592M/JW2xrmV9MmJr58h9whT5Hw54Nw=
 			</data>
 		</dict>
 		<key>Headers/SLPLTcpManager+EW202W.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZTZXITuaoH3WEHs9TmHL67V/IAM=
+			szayuowRKEue96GWpGSFcpCo9NI=
 			</data>
 			<key>hash2</key>
 			<data>
-			gd+hId+a3Xb1q4xHGGHFYhVrgMMHVzaf4TQgOMAs9sc=
+			7wDTTMYAJsw6KFbS0EC2j075smLYs/LDT5REw49T6bw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

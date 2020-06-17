@@ -9,6 +9,4 @@
 #ifndef SLPEW202WDef_h
 #define SLPEW202WDef_h
 
-#define kNotificationNameLanEW202WMusicPlayProgressChanged @"kNotificationNameLanEW202WMusicPlayProgressChanged"//EW202W的音乐播放进度
-
 #endif /* SLPEW202WDef_h */

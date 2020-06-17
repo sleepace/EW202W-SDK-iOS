@@ -227,7 +227,7 @@
 - (NSString *)getAlarmTimeStringWithDataModle:(SLPAlarmInfo *)dataModel {
     NSString *time = [SLPUtils timeStringFrom:dataModel.hour minute:dataModel.minute isTimeMode24:[SLPUtils isTimeMode24]];
     NSString *alarmType = (dataModel.alarmID == 0) ? LocalizedString(@"build_alarm") : LocalizedString(@"");
-    return [NSString stringWithFormat:@"%@ -- %@",time,alarmType];
+    return  (dataModel.alarmID == 0) ? [NSString stringWithFormat:@"%@ -- %@",time,alarmType] : time;
 }
 
 - (void)editAlarmInfoAndShouldReload

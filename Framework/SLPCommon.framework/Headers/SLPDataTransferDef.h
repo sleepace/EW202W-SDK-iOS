@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger,SLPDataTransferStatus) {
     SLPDataTransferStatus_Failed = -3,// 失败
     SLPDataTransferStatus_ConnectionDisabled = -4,//连接禁用了 或者网络断开了
     SLPDataTransferStatus_ParameterError = -5,//参数错误
+    SLPDataTransferStatus_ConfigMode = -6,//正在配置模式
 };
 
 /*蓝牙或TCP请求时的回调
