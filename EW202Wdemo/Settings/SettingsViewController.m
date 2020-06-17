@@ -81,6 +81,30 @@
 
     
     self.synServerTime = SharedDataManager.synServerTime;
+    
+    __weak typeof(self) weakSelf = self;
+    [SLPSharedLTcpManager ew202wGetSystemWithDeviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            EW202WSystemInfo *info = data;
+            weakSelf.synServerTime = info.netSynFlag;
+            SharedDataManager.synServerTime = info.netSynFlag;
+            
+            weakSelf.timeFormat = info.timeForm;
+            SharedDataManager.timeFormat = info.timeForm;
+            
+            [weakSelf.tableView reloadData];
+        }
+    }];
+    
+    [SLPSharedLTcpManager getClockDormancyWithDeviceInfo:SharedDataManager.deviceID timeOut:0 callback:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            SLPClockDormancyBean *info = data;
+            weakSelf.bean = info;
+            SharedDataManager.bean = info;
+            
+            [weakSelf.tableView reloadData];
+        }
+    }];
 }
 
 - (void)setUI

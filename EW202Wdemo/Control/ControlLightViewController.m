@@ -138,11 +138,6 @@
             brightness = 50;
         }
         
-        BOOL brightValid = (brightness >= 0) && (brightness <= 100);
-        if (!brightValid) {
-            brightness = 50;
-        }
-        
         SLPLight *ligtht = [[SLPLight alloc] init];
         ligtht.r = r;
         ligtht.g = g;
@@ -164,24 +159,55 @@
 }
 
 - (IBAction)sendBrightnessAction:(UIButton *)sender {
+    BOOL valueR = self.colorRTextField.text.length;
+    BOOL valueG = self.colorGTextfFiled.text.length;
+    BOOL valueB = self.colorBTextFiled.text.length;
+    BOOL valueW = self.colorWTextFiled.text.length;
+    
     if (!self.brightnessTextFiled.text.length) {
         [Utils showMessage:LocalizedString(@"input_0_100") controller:self];
         return;
     }
     
-    int brightness = [self.brightnessTextFiled.text intValue];
-    BOOL brightValid = (brightness >= 0) && (brightness <= 100);
-    if (!brightValid) {
-        [Utils showMessage:LocalizedString(@"input_0_100") controller:self];
-        return;
-    }
-    
-    __weak typeof(self) weakSelf = self;
-    [SLPSharedLTcpManager ew202wLightControlOperation:2 brightness:brightness lightMode:0xff light:[SLPLight new] deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
-        if (status != SLPDataTransferStatus_Succeed) {
-            [Utils showDeviceOperationFailed:status atViewController:weakSelf];
+    if (valueR && valueB && valueG && valueW) {
+        int r = [self.colorRTextField.text intValue];
+        int g = [self.colorGTextfFiled.text intValue];
+        int b = [self.colorBTextFiled.text intValue];
+        int w = [self.colorWTextFiled.text intValue];
+        
+        BOOL rValid = (r >= 0) && (r <= 255);
+        BOOL gValid = (g >= 0) && (g <= 255);
+        BOOL bValid = (b >= 0) && (b <= 255);
+        BOOL wValid = (w >= 0) && (w <= 255);
+        
+        if (!(rValid && gValid && bValid && wValid)) {
+            [Utils showMessage:LocalizedString(@"input_0_255") controller:self];
+            return;
         }
-    }];
+        
+        
+        int brightness = [self.brightnessTextFiled.text intValue];
+        BOOL brightValid = (brightness >= 0) && (brightness <= 100);
+        if (!brightValid) {
+            [Utils showMessage:LocalizedString(@"input_0_100") controller:self];
+            return;
+        }
+        
+        SLPLight *ligtht = [[SLPLight alloc] init];
+        ligtht.r = r;
+        ligtht.g = g;
+        ligtht.b = b;
+        ligtht.w = w;
+        
+        __weak typeof(self) weakSelf = self;
+        [SLPSharedLTcpManager ew202wLightControlOperation:2 brightness:brightness lightMode:0xff light:ligtht deviceInfo:SharedDataManager.deviceID timeout:0 callback:^(SLPDataTransferStatus status, id data) {
+            if (status != SLPDataTransferStatus_Succeed) {
+                [Utils showDeviceOperationFailed:status atViewController:weakSelf];
+            }
+        }];
+    } else {
+        [Utils showMessage:LocalizedString(@"input_0_255") controller:self];
+    }
 }
 
 - (IBAction)openLightAction:(UIButton *)sender {
