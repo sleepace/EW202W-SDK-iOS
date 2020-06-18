@@ -260,4 +260,10 @@
 "build_alarm"="内置闹钟";
 "close1"="关闭";
 "entered_light"="你已进入配置模式，请退出后，再使用App操作";
+"bind_account_success"="绑定成功";
+"bind_fail"="绑定失败";
+"unbind_success"="解绑成功";
+"unbind_failed"="解绑失败";
+"bind"="绑定设备";
+"unbind"="解绑设备";
 "EveryDay"="每天";

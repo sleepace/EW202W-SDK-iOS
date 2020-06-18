@@ -89,7 +89,7 @@
             weakSelf.synServerTime = info.netSynFlag;
             SharedDataManager.synServerTime = info.netSynFlag;
             
-            weakSelf.timeFormat = info.timeForm;
+            weakSelf.timeFormat = (info.timeForm == 0) ? 12 : 24;
             SharedDataManager.timeFormat = info.timeForm;
             
             [weakSelf.tableView reloadData];

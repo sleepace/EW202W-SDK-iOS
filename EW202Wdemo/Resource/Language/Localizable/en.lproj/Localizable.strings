@@ -260,4 +260,10 @@
 "build_alarm"="Built-in alarm";
 "close1"="Close";
 "entered_light"="You have entered the configuration mode, please log out and then use the App to operate";
+"bind_account_success"="Successful!";
+"bind_fail"="Failed！";
+"unbind_success"="Successful!";
+"unbind_failed"="Failed！";
+"bind"="Connect";
+"unbind"="Unbind";
 "EveryDay"="Everyday";

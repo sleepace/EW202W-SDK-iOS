@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceViewController">
             <connections>
+                <outlet property="bindBtn" destination="EzR-l9-MlJ" id="RtY-Ih-pV1"/>
                 <outlet property="channelTextField" destination="a9s-Df-XjM" id="Hmm-JV-8us"/>
                 <outlet property="connectBtn" destination="bSn-0u-6th" id="VNW-mA-ciB"/>
                 <outlet property="contentView" destination="nfi-p0-X9z" id="doh-1H-pAh"/>
@@ -23,6 +24,7 @@
                 <outlet property="navigationShellHeight" destination="nwZ-pa-2RH" id="nfY-dQ-6QE"/>
                 <outlet property="titleLabel" destination="dKh-eT-vb9" id="ywH-J8-MlE"/>
                 <outlet property="tokenTextField" destination="NCF-6E-TuM" id="7e0-gt-bDw"/>
+                <outlet property="unBindBtn" destination="CKD-0n-b8I" id="c9l-v0-MGc"/>
                 <outlet property="upgradeBtn" destination="nRa-dh-edK" id="NnH-gx-Qs2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -77,7 +79,7 @@
                     <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfi-p0-X9z" userLabel="content view">
-                            <rect key="frame" x="15" y="0.0" width="345" height="531"/>
+                            <rect key="frame" x="15" y="0.0" width="345" height="660"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-CH-J94">
                                     <rect key="frame" x="0.0" y="15" width="345" height="280"/>
@@ -135,7 +137,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-QC-Zsg">
-                                    <rect key="frame" x="0.0" y="295" width="345" height="211"/>
+                                    <rect key="frame" x="0.0" y="295" width="345" height="340"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nhw-Ny-WgR">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
@@ -163,20 +165,46 @@
                                                 <action selector="upgradeClicked:" destination="-1" eventType="touchUpInside" id="wTl-c6-xrF"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-l9-MlJ">
+                                            <rect key="frame" x="0.0" y="210" width="345" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="xVZ-v6-4ej"/>
+                                            </constraints>
+                                            <state key="normal" title="Bind"/>
+                                            <connections>
+                                                <action selector="bind:" destination="-1" eventType="touchUpInside" id="3hV-5h-YX9"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKD-0n-b8I">
+                                            <rect key="frame" x="0.0" y="280" width="345" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="q6a-qS-Wlq"/>
+                                            </constraints>
+                                            <state key="normal" title="UnBind"/>
+                                            <connections>
+                                                <action selector="unBind:" destination="-1" eventType="touchUpInside" id="53N-Zx-RiB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Nhw-Ny-WgR" firstAttribute="top" secondItem="hvq-QC-Zsg" secondAttribute="top" id="4hE-M5-kQ8"/>
+                                        <constraint firstItem="EzR-l9-MlJ" firstAttribute="top" secondItem="nRa-dh-edK" secondAttribute="bottom" constant="20" id="59d-s8-CIw"/>
+                                        <constraint firstAttribute="trailing" secondItem="CKD-0n-b8I" secondAttribute="trailing" id="MMp-No-DwF"/>
                                         <constraint firstItem="HCL-53-2f0" firstAttribute="leading" secondItem="hvq-QC-Zsg" secondAttribute="leading" id="OWR-Qj-XJh"/>
-                                        <constraint firstAttribute="bottom" secondItem="nRa-dh-edK" secondAttribute="bottom" constant="21" id="XMR-I4-ddM"/>
+                                        <constraint firstAttribute="trailing" secondItem="EzR-l9-MlJ" secondAttribute="trailing" id="UFj-4H-Qio"/>
+                                        <constraint firstAttribute="bottom" secondItem="nRa-dh-edK" secondAttribute="bottom" constant="150" id="XMR-I4-ddM"/>
                                         <constraint firstAttribute="trailing" secondItem="nRa-dh-edK" secondAttribute="trailing" id="YUd-w2-UtW"/>
+                                        <constraint firstItem="EzR-l9-MlJ" firstAttribute="leading" secondItem="hvq-QC-Zsg" secondAttribute="leading" id="dG6-AV-i6Y"/>
                                         <constraint firstAttribute="trailing" secondItem="nRa-dh-edK" secondAttribute="trailing" id="dwV-3q-ASZ"/>
                                         <constraint firstItem="nRa-dh-edK" firstAttribute="top" secondItem="HCL-53-2f0" secondAttribute="bottom" constant="20" id="fmU-UJ-jpl"/>
                                         <constraint firstAttribute="trailing" secondItem="HCL-53-2f0" secondAttribute="trailing" id="h3j-dG-oGV"/>
+                                        <constraint firstItem="CKD-0n-b8I" firstAttribute="leading" secondItem="hvq-QC-Zsg" secondAttribute="leading" id="hP2-vM-H5V"/>
                                         <constraint firstItem="Nhw-Ny-WgR" firstAttribute="leading" secondItem="hvq-QC-Zsg" secondAttribute="leading" id="ifC-C9-xS9"/>
                                         <constraint firstItem="HCL-53-2f0" firstAttribute="top" secondItem="Nhw-Ny-WgR" secondAttribute="bottom" constant="20" id="lzr-XR-ZO3"/>
                                         <constraint firstAttribute="trailing" secondItem="Nhw-Ny-WgR" secondAttribute="trailing" id="meg-Hd-ct5"/>
                                         <constraint firstItem="nRa-dh-edK" firstAttribute="leading" secondItem="hvq-QC-Zsg" secondAttribute="leading" id="uen-Pf-myt"/>
+                                        <constraint firstItem="CKD-0n-b8I" firstAttribute="top" secondItem="EzR-l9-MlJ" secondAttribute="bottom" constant="20" id="vvw-KA-1Ro"/>
                                     </constraints>
                                 </view>
                             </subviews>

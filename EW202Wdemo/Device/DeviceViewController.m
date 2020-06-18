@@ -46,6 +46,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *firmwareInfoSectionLabel;
 @property (nonatomic, weak) IBOutlet UIButton *getFirmwareVersionBtn;
 @property (nonatomic, weak) IBOutlet UILabel *firmwareVersionLabel;
+@property (nonatomic, weak) IBOutlet UIButton *bindBtn;
+@property (nonatomic, weak) IBOutlet UIButton *unBindBtn;
 
 
 @property (nonatomic, assign) BOOL connected;
@@ -69,7 +71,9 @@
     [Utils configNormalButton:self.getFirmwareVersionBtn];
     [Utils configNormalButton:self.getMacBtn];
     [Utils configNormalButton:self.upgradeBtn];
-    
+    [Utils configNormalButton:self.bindBtn];
+    [Utils configNormalButton:self.unBindBtn];
+
     [Utils configNormalDetailLabel:self.deviceNameLabel];
     [Utils configNormalDetailLabel:self.deviceIDLabel];
     [Utils configNormalDetailLabel:self.batteryLabel];
@@ -117,6 +121,8 @@
     [Utils setButton:self.getMacBtn title:LocalizedString(@"obtain_mac_address")];
     [Utils setButton:self.upgradeBtn title:LocalizedString(@"fireware_update")];
     [Utils setButton:self.connectBtn title:LocalizedString(@"connect_server")];
+    [Utils setButton:self.bindBtn title:LocalizedString(@"bind")];
+    [Utils setButton:self.unBindBtn title:LocalizedString(@"unbind")];
 
 
     [self.userIDTitleLabel setText:LocalizedString(@"userid_sync_sleep")];
@@ -310,6 +316,40 @@
         default:
             break;
     }
+}
+
+- (IBAction)bind:(id)sender
+{
+    if (self.deviceIDTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"id_cipher") controller:self];
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [SLPSharedLTcpManager bindDevice:self.deviceIDTextField.text leftRight:0 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            [Utils showMessage:LocalizedString(@"bind_account_success") controller:weakSelf];
+        } else {
+            [Utils showMessage:LocalizedString(@"bind_fail") controller:weakSelf];
+        }
+    }];
+}
+
+- (IBAction)unBind:(id)sender
+{
+    if (self.deviceIDTextField.text.length == 0) {
+        [Utils showMessage:LocalizedString(@"id_cipher") controller:self];
+        return;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [SLPSharedLTcpManager unBindDevice:self.deviceIDTextField.text leftRight:0 timeout:0 completion:^(SLPDataTransferStatus status, id data) {
+        if (status == SLPDataTransferStatus_Succeed) {
+            [Utils showMessage:LocalizedString(@"unbind_success") controller:weakSelf];
+        } else {
+            [Utils showMessage:LocalizedString(@"unbind_failed") controller:weakSelf];
+        }
+    }];
 }
 
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string
