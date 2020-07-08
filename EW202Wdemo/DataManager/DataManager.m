@@ -23,7 +23,7 @@
 {
     if (self = [super init]) {
         _selectItemsNum = 7;
-        _assistMusicID = 30086;
+        _assistMusicID = 31131;
         
         _aidInfo = [[SLPAidInfo alloc] init];
         _aidInfo.aidStopDuration = 1;
