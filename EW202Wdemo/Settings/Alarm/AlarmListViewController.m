@@ -73,7 +73,7 @@
     info.snoozeLength = 9;
     info.volume = 16;
     info.brightness = 100;
-    info.musicID = 31098;
+    info.musicID = 31143;
     info.timestamp = 0;
     info.enable = YES;
     __weak typeof(self) weakSelf = self;

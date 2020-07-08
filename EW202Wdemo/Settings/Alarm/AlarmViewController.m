@@ -62,32 +62,32 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
         _musicList = [NSMutableArray array];
         
         MusicInfo *musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31098;
+        musicInfo.musicID = 31143;
         musicInfo.musicName = LocalizedString(@"alarm_list_1");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31099;
+        musicInfo.musicID = 31144;
         musicInfo.musicName = LocalizedString(@"alarm_list_3");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31100;
+        musicInfo.musicID = 31145;
         musicInfo.musicName = LocalizedString(@"dididi");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31101;
+        musicInfo.musicID = 31146;
         musicInfo.musicName = LocalizedString(@"music_box");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31102;
+        musicInfo.musicID = 31147;
         musicInfo.musicName = LocalizedString(@"alarm_list_9");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31103;
+        musicInfo.musicID = 31148;
         musicInfo.musicName = LocalizedString(@"alarm_list_7");
         [_musicList addObject:musicInfo];
     }
@@ -152,7 +152,7 @@ static NSString *const kRowSnoozeTime = @"kRowSnoozeTime";
     self.alarmDataNew.snoozeLength = 5;
     self.alarmDataNew.volume = 16;
     self.alarmDataNew.brightness = 100;
-    self.alarmDataNew.musicID = 31098;
+    self.alarmDataNew.musicID = 31143;
 //    self.alarmDataNew.aromaRate = 2;
     self.alarmDataNew.timestamp = [[NSDate date] timeIntervalSince1970];
     self.alarmDataNew.enable = 1;

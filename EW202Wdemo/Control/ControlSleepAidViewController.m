@@ -85,62 +85,62 @@
         _musicList = [NSMutableArray array];
         
         MusicInfo *musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31086;
+        musicInfo.musicID = 31131;
         musicInfo.musicName = LocalizedString(@"music_list_You");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31087;
+        musicInfo.musicID = 31132;
         musicInfo.musicName = LocalizedString(@"music_list_Moon");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31088;
+        musicInfo.musicID = 31133;
         musicInfo.musicName = LocalizedString(@"music_list_Here");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31089;
+        musicInfo.musicID = 31134;
         musicInfo.musicName = LocalizedString(@"music_list_Journey");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31090;
+        musicInfo.musicID = 31135;
         musicInfo.musicName = LocalizedString(@"music_list_World");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31091;
+        musicInfo.musicID = 31136;
         musicInfo.musicName = LocalizedString(@"music_list_Baby");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31092;
+        musicInfo.musicID = 31137;
         musicInfo.musicName = LocalizedString(@"music_list_Lullaby");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31093;
+        musicInfo.musicID = 31138;
         musicInfo.musicName = LocalizedString(@"music_list_star");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31094;
+        musicInfo.musicID = 31139;
         musicInfo.musicName = LocalizedString(@"music_list_sun");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31095;
+        musicInfo.musicID = 31140;
         musicInfo.musicName = LocalizedString(@"music_list_sea");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31096;
+        musicInfo.musicID = 31141;
         musicInfo.musicName = LocalizedString(@"music_list_rain");
         [_musicList addObject:musicInfo];
         
         musicInfo = [[MusicInfo alloc] init];
-        musicInfo.musicID = 31097;
+        musicInfo.musicID = 31142;
         musicInfo.musicName = LocalizedString(@"music_list_dance");
         [_musicList addObject:musicInfo];
     }

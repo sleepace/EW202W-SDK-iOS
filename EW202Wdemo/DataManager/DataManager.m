@@ -34,7 +34,7 @@
         _aidInfo.brightness = 0;
         _aidInfo.aidStopDuration = 45;
         _aidInfo.volume = 0;
-        _aidInfo.musicID = 31086;
+        _aidInfo.musicID = 31131;
         _aidInfo.lightFlag = 1;
         _volumn = 0;
         
@@ -87,7 +87,7 @@
 - (void)reset
 {
     _selectItemsNum = 7;
-    _assistMusicID = 31086;
+    _assistMusicID = 31131;
     
     _aidInfo.aidStopDuration = 1;
     _aidInfo.r = 255;
